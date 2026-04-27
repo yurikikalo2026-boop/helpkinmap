@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help Kin Map - Trusted help abroad</title>
+    <meta name="description" content="Find trusted help abroad. Housing, jobs, diaspora communities, trusted people nearby.">
+    <meta name="theme-color" content="#0057B7">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="icon-192.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Comfortaa:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <a href="/" class="logo" data-route="/">
+                <div class="logo-icon">🤝</div>
+                <span data-i18n="appName">Help Kin Map</span>
+            </a>
+            <nav class="nav-actions">
+                <select class="lang-switch" id="langSwitch">
+                    <option value="uk">🇺🇦 Українська</option>
+                    <option value="en">🇬🇧 English</option>
+                </select>
+                <button class="btn btn-outline" id="loginBtn" data-route="/login" data-i18n="login">Увійти</button>
+                <button class="btn btn-primary" id="signupBtn" data-route="/register" data-i18n="signup">Реєстрація</button>
+                <button class="btn btn-outline hidden" id="logoutBtn" data-i18n="logout">Вийти</button>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="landingSection" class="landing-screen">
+            <div class="landing-grid container">
+                <div class="hero-copy">
+                    <p class="eyebrow" data-i18n="heroEyebrow">Trusted help for Ukrainians abroad</p>
+                    <h1 data-i18n="heroTitle">Find trusted help abroad</h1>
+                    <p class="hero-subtitle" data-i18n="heroSubtitle">Housing, jobs, diaspora communities, trusted people nearby. Connect with verified helpers who understand your journey.</p>
+
+                    <div class="hero-actions">
+                        <a href="/register" class="btn btn-primary btn-large" data-route="/register" data-i18n="heroNeedHelp">Need Help</a>
+                        <a href="/register" class="btn btn-secondary btn-large" data-route="/register" data-i18n="heroWantToHelp">Want to Help</a>
+                    </div>
+                    <div class="hero-actions hero-actions-alt">
+                        <a href="/dashboard" class="btn btn-primary btn-large" data-route="/dashboard" data-page="map" data-i18n="heroExploreMap">Explore Map</a>
+                        <a href="/register" class="btn btn-secondary btn-large" data-route="/register" data-i18n="heroRegister">Register</a>
+                        <a href="/login" class="btn btn-outline btn-large" data-route="/login" data-i18n="heroLogin">Login</a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="hero-card hero-card-top">
+                        <span>📍</span>
+                        <div>
+                            <strong data-i18n="heroCardTopTitle">Trusted people nearby</strong>
+                            <p data-i18n="heroCardTopDesc">Find local community members ready to help.</p>
+                        </div>
+                    </div>
+                    <div class="active-cities">
+                        <div class="city-dot city-berlin" data-city="Berlin">
+                            <div class="city-pulse"></div>
+                            <div class="city-label">Berlin</div>
+                        </div>
+                        <div class="city-dot city-warsaw" data-city="Warsaw">
+                            <div class="city-pulse"></div>
+                            <div class="city-label">Warsaw</div>
+                        </div>
+                        <div class="city-dot city-prague" data-city="Prague">
+                            <div class="city-pulse"></div>
+                            <div class="city-label">Prague</div>
+                        </div>
+                        <div class="city-dot city-toronto" data-city="Toronto">
+                            <div class="city-pulse"></div>
+                            <div class="city-label">Toronto</div>
+                        </div>
+                        <div class="cities-title" data-i18n="activeCitiesLabel">Active Communities</div>
+                    </div>
+                    <div class="hero-card hero-card-bottom">
+                        <span>💬</span>
+                        <div>
+                            <strong data-i18n="heroCardBottomTitle">Real support in real places</strong>
+                            <p data-i18n="heroCardBottomDesc">Connect with safe, verified helpers abroad.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <section class="landing-stats container">
+                <div class="stat-card">
+                    <div class="stat-value">127</div>
+                    <div class="stat-label" data-i18n="statHelpers">people ready to help</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">42</div>
+                    <div class="stat-label" data-i18n="statCountries">countries</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">18</div>
+                    <div class="stat-label" data-i18n="statRequests">active requests</div>
+                </div>
+            </section>
+
+            <section class="landing-section container">
+                <div class="section-header">
+                    <h2 data-i18n="howItWorks">How it works</h2>
+                    <p data-i18n="howItWorksDescription">Three simple steps to get support or offer help.</p>
+                </div>
+                <div class="feature-grid">
+                    <article class="feature-card">
+                        <span class="feature-number">1</span>
+                        <h3 data-i18n="feature1Title">Create your profile</h3>
+                        <p data-i18n="feature1Desc">Register quickly and share what support you need or can offer.</p>
+                    </article>
+                    <article class="feature-card">
+                        <span class="feature-number">2</span>
+                        <h3 data-i18n="feature2Title">Explore trusted helpers</h3>
+                        <p data-i18n="feature2Desc">Browse the map and categories to find verified local support.</p>
+                    </article>
+                    <article class="feature-card">
+                        <span class="feature-number">3</span>
+                        <h3 data-i18n="feature3Title">Connect with confidence</h3>
+                        <p data-i18n="feature3Desc">Message helpers, join diaspora communities, and get help safely.</p>
+                    </article>
+                </div>
+            </section>
+
+            <section class="landing-section container">
+                <div class="section-header">
+                    <h2 data-i18n="helpCategories">Help categories</h2>
+                    <p data-i18n="helpCategoriesDescription">Find the exact support you need faster. Real help from real people.</p>
+                </div>
+                <div class="category-grid">
+                    <div class="category-card" style="--i: 1">
+                        <span>🏠</span>
+                        <strong data-i18n="categoryHousing">Housing</strong>
+                        <p data-i18n="categoryHousingDesc">Temporary stays, apartments, shared homes</p>
+                    </div>
+                    <div class="category-card" style="--i: 2">
+                        <span>💼</span>
+                        <strong data-i18n="categoryJobs">Jobs</strong>
+                        <p data-i18n="categoryJobsDesc">Job leads, career advice, networking</p>
+                    </div>
+                    <div class="category-card" style="--i: 3">
+                        <span>📄</span>
+                        <strong data-i18n="categoryDocuments">Documents</strong>
+                        <p data-i18n="categoryDocumentsDesc">Visa help, paperwork, translations</p>
+                    </div>
+                    <div class="category-card" style="--i: 4">
+                        <span>⚖️</span>
+                        <strong data-i18n="categoryLegal">Legal Help</strong>
+                        <p data-i18n="categoryLegalDesc">Legal advice, immigration support</p>
+                    </div>
+                    <div class="category-card" style="--i: 5">
+                        <span>🗣️</span>
+                        <strong data-i18n="categoryLanguage">Language</strong>
+                        <p data-i18n="categoryLanguageDesc">Language lessons, cultural guidance</p>
+                    </div>
+                    <div class="category-card" style="--i: 6">
+                        <span>👥</span>
+                        <strong data-i18n="categoryCommunity">Community</strong>
+                        <p data-i18n="categoryCommunityDesc">Diaspora connections, local events</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="landing-trust container">
+                <div class="section-header">
+                    <h2 data-i18n="builtOnTrust">Built on trust</h2>
+                    <p data-i18n="builtOnTrustDescription">Every connection is designed to feel safe, transparent and community-driven. Your story matters.</p>
+                </div>
+                <div class="trust-grid">
+                    <div class="trust-card" style="--i: 1">
+                        <span>🛡️</span>
+                        <strong data-i18n="trustVerifiedProfiles">Verified profiles</strong>
+                        <p data-i18n="trustVerifiedProfilesDesc">We keep trusted helpers and requests visible to the community. No strangers, only connections.</p>
+                    </div>
+                    <div class="trust-card" style="--i: 2">
+                        <span>💬</span>
+                        <strong data-i18n="trustSecureMessaging">Secure messaging</strong>
+                        <p data-i18n="trustSecureMessagingDesc">Communicate directly with helpers and stay in control. Your safety is our priority.</p>
+                    </div>
+                    <div class="trust-card" style="--i: 3">
+                        <span>❤️</span>
+                        <strong data-i18n="trustCommunityFirst">Community first</strong>
+                        <p data-i18n="trustCommunityFirstDesc">Designed for Ukrainians abroad with real support where it matters. Together, we're stronger.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="landing-cta container">
+                <div class="cta-panel">
+                    <div>
+                        <h2 data-i18n="readyCtaTitle">Ready to find help or give it?</h2>
+                        <p data-i18n="readyCtaSubtitle">Join Help Kin Map and connect with a trusted diaspora network worldwide.</p>
+                    </div>
+                    <div class="cta-actions">
+                        <a href="/register" class="btn btn-primary" data-route="/register" data-i18n="ctaGetStarted">Get Started</a>
+                        <a href="/login" class="btn btn-outline" data-route="/login" data-i18n="ctaLogin">Login</a>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-brand">
+                        <div class="logo-icon">🤝</div>
+                        <span>Help Kin Map</span>
+                    </div>
+                    <p data-i18n="footerSupport">Support people abroad</p>
+                </div>
+            </div>
+        </footer>
+
+        <section id="authSection" class="auth-screen hidden">
+            <div class="auth-card">
+                <div class="auth-header">
+                    <h2 data-i18n="welcomeTitle">Ласкаво просимо до Help Kin Map</h2>
+                    <p data-i18n="welcomeSubtitle">З'єднайтесь з родиною та друзями по всьому світу</p>
+                </div>
+
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label class="form-label" data-i18n="email">Електронна пошта</label>
+                        <input type="email" class="form-input" required placeholder="user@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" data-i18n="password">Пароль</label>
+                        <input type="password" class="form-input" required placeholder="••••••••">
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;" data-i18n="login">Увійти</button>
+
+                    <div class="divider">
+                        <span data-i18n="orContinueWith">або продовжити з</span>
+                    </div>
+
+                    <div class="social-login">
+                        <button type="button" class="social-btn">
+                            <span>📧</span>
+                            Google
+                        </button>
+                        <button type="button" class="social-btn">
+                            <span>✈️</span>
+                            Telegram
+                        </button>
+                    </div>
+
+                    <p class="auth-switch">
+                        <span data-i18n="noAccount">Немає акаунта?</span>
+                        <a href="/register" id="switchToSignup" data-route="/register" data-i18n="signupLink">Зареєструватися</a>
+                    </p>
+                </form>
+
+                <form id="signupForm" class="hidden">
+                    <div class="form-group">
+                        <label class="form-label" data-i18n="fullName">Повне ім'я</label>
+                        <input type="text" class="form-input" required placeholder="Іван Петренко">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" data-i18n="email">Електронна пошта</label>
+                        <input type="email" class="form-input" required placeholder="user@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" data-i18n="password">Пароль</label>
+                        <input type="password" class="form-input" required placeholder="••••••••">
+                    </div>
+                    <div class="form-checkbox">
+                        <input type="checkbox" id="gdprConsent" required>
+                        <label for="gdprConsent" data-i18n="gdprConsent">Я погоджуюся з обробкою персональних даних (GDPR)</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;" data-i18n="createAccount">Створити акаунт</button>
+
+                    <div class="divider">
+                        <span data-i18n="orContinueWith">або продовжити з</span>
+                    </div>
+
+                    <div class="social-login">
+                        <button type="button" class="social-btn">
+                            <span>📧</span>
+                            Google
+                        </button>
+                        <button type="button" class="social-btn">
+                            <span>✈️</span>
+                            Telegram
+                        </button>
+                    </div>
+
+                    <p class="auth-switch">
+                        <span data-i18n="haveAccount">Вже є акаунт?</span>
+                        <a href="/login" id="switchToLogin" data-route="/login" data-i18n="loginLink">Увійти</a>
+                    </p>
+                </form>
+            </div>
+        </section>
+
+        <section id="dashboardScreen" class="hidden">
+            <div class="container">
+                <div class="dashboard">
+                    <aside class="sidebar">
+                        <ul class="sidebar-nav">
+                            <li><a href="#" class="active" data-page="home">
+                                <span>🏠</span>
+                                <span data-i18n="navHome">Головна</span>
+                            </a></li>
+                            <li><a href="#" data-page="map">
+                                <span>🗺️</span>
+                                <span data-i18n="navMap">Карта допомоги</span>
+                            </a></li>
+                            <li><a href="#" data-page="requests">
+                                <span>📋</span>
+                                <span data-i18n="navRequests">Запити на допомогу</span>
+                            </a></li>
+                            <li><a href="#" data-page="network">
+                                <span>👥</span>
+                                <span data-i18n="navNetwork">Моя мережа</span>
+                            </a></li>
+                            <li><a href="#" data-page="messages">
+                                <span>💬</span>
+                                <span data-i18n="navMessages">Повідомлення</span>
+                            </a></li>
+                            <li><a href="#" data-page="profile">
+                                <span>⚙️</span>
+                                <span data-i18n="navProfile">Профіль</span>
+                            </a></li>
+                        </ul>
+                    </aside>
+
+                    <main class="main-content">
+                        <div id="homePage" class="page-content">
+                            <h1 class="page-title" data-i18n="dashboardTitle">Ласкаво просимо, <span id="userName">Друже</span>! 👋</h1>
+
+                            <div class="stats-grid">
+                                <div class="stat-card">
+                                    <div class="stat-value" id="statHelpers">127</div>
+                                    <div class="stat-label" data-i18n="statHelpers">Людей готові допомогти</div>
+                                </div>
+                                <div class="stat-card">
+                                    <div class="stat-value" id="statCountries">42</div>
+                                    <div class="stat-label" data-i18n="statCountries">Країн</div>
+                                </div>
+                                <div class="stat-card">
+                                    <div class="stat-value" id="statRequests">18</div>
+                                    <div class="stat-label" data-i18n="statRequests">Активних запитів</div>
+                                </div>
+                                <div class="stat-card">
+                                    <div class="stat-value" id="statNetwork">23</div>
+                                    <div class="stat-label" data-i18n="statNetwork">У вашій мережі</div>
+                                </div>
+                            </div>
+
+                            <h2 class="section-title" data-i18n="recentRequests">Останні запити у вашій мережі</h2>
+                            <div id="recentRequestsList"></div>
+                        </div>
+
+                        <div id="mapPage" class="page-content hidden">
+                            <div class="map-section">
+                                <div class="map-header">
+                                    <h2 data-i18n="mapTitle">Карта допомоги по всьому світу</h2>
+                                    <div class="map-filters">
+                                        <button class="filter-chip active" data-filter="all">
+                                            <span data-i18n="filterAll">Всі</span>
+                                        </button>
+                                        <button class="filter-chip" data-filter="housing">
+                                            🏠 <span data-i18n="filterHousing">Житло</span>
+                                        </button>
+                                        <button class="filter-chip" data-filter="job">
+                                            💼 <span data-i18n="filterJob">Робота</span>
+                                        </button>
+                                        <button class="filter-chip" data-filter="language">
+                                            🗣️ <span data-i18n="filterLanguage">Мова</span>
+                                        </button>
+                                        <button class="filter-chip" data-filter="education">
+                                            🎓 <span data-i18n="filterEducation">Освіта</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div id="map"></div>
+                            </div>
+
+                            <h2 class="section-title" data-i18n="peopleOffering">Люди, що пропонують допомогу</h2>
+                            <div class="cards-grid" id="helpersGrid"></div>
+                        </div>
+
+                        <div id="requestsPage" class="page-content hidden">
+                            <div class="page-heading">
+                                <h2 data-i18n="requestsTitle">Запити на допомогу</h2>
+                                <button class="btn btn-primary" id="createRequestBtn" data-i18n="createRequest">+ Створити запит</button>
+                            </div>
+                            <div id="requestsList"></div>
+                        </div>
+
+                        <div id="networkPage" class="page-content hidden">
+                            <div class="page-heading">
+                                <h2 data-i18n="networkTitle">Моя мережа</h2>
+                                <button class="btn btn-primary" id="inviteBtn" data-i18n="inviteBtn">+ Запросити родича/друга</button>
+                            </div>
+                            <div class="cards-grid" id="networkGrid"></div>
+                        </div>
+
+                        <div id="profilePage" class="page-content hidden">
+                            <h2 class="section-title" data-i18n="profileTitle">Мій профіль</h2>
+                            <div class="profile-grid">
+                                <div class="card">
+                                    <h3 data-i18n="personalInfo">Персональна інформація</h3>
+                                    <div class="form-group">
+                                        <label class="form-label" data-i18n="fullName">Повне ім'я</label>
+                                        <input type="text" class="form-input" id="profileName" value="Олена Коваленко">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" data-i18n="email">Електронна пошта</label>
+                                        <input type="email" class="form-input" id="profileEmail" value="olena@example.com">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" data-i18n="bio">Про себе</label>
+                                        <textarea class="form-input" id="profileBio" rows="4">Викладач англійської мови, з родиною переїхала до Німеччини у 2022 році.</textarea>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <h3 data-i18n="location">Розташування</h3>
+                                    <div class="form-group">
+                                        <label class="form-label" data-i18n="country">Країна</label>
+                                        <input type="text" class="form-input" id="profileCountry" value="Німеччина">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" data-i18n="city">Місто</label>
+                                        <input type="text" class="form-input" id="profileCity" value="Берлін">
+                                    </div>
+                                    <button class="btn btn-secondary" id="detectLocationBtn">
+                                        📍 <span data-i18n="detectLocation">Визначити автоматично</span>
+                                    </button>
+                                </div>
+                                <div class="card">
+                                    <h3 data-i18n="helpOffering">Яку допомогу я можу запропонувати</h3>
+                                    <div class="checkbox-group">
+                                        <label class="checkbox-item">
+                                            <input type="checkbox" checked>
+                                            <span class="checkbox-label">🏠 <span data-i18n="offerHousing">Тимчасове житло</span></span>
+                                        </label>
+                                        <label class="checkbox-item">
+                                            <input type="checkbox" checked>
+                                            <span class="checkbox-label">💼 <span data-i18n="offerJob">Допомога з пошуком роботи</span></span>
+                                        </label>
+                                        <label class="checkbox-item">
+                                            <input type="checkbox" checked>
+                                            <span class="checkbox-label">🗣️ <span data-i18n="offerLanguage">Уроки мови</span></span>
+                                        </label>
+                                        <label class="checkbox-item">
+                                            <input type="checkbox">
+                                            <span class="checkbox-label">🎓 <span data-i18n="offerEducation">Консультації з освіти</span></span>
+                                        </label>
+                                        <label class="checkbox-item">
+                                            <input type="checkbox">
+                                            <span class="checkbox-label">📍 <span data-i18n="offerLocal">Місцеві поради</span></span>
+                                        </label>
+                                    </div>
+                                    <div class="form-group" style="margin-top: var(--spacing-lg);">
+                                        <label class="form-label" data-i18n="offerDetails">Додаткові деталі</label>
+                                        <textarea class="form-input" id="profileOfferDetails" rows="3">Можу допомогти з вивченням англійської та німецької мов. Маю досвід викладання 10+ років.</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary" id="saveProfileBtn" style="width: fit-content;">
+                                💾 <span data-i18n="saveProfile">Зберегти профіль</span>
+                            </button>
+                        </div>
+                    </main>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="chatSidebar" class="chat-sidebar">
+        <div class="chat-header">
+            <h3 data-i18n="messages">Повідомлення</h3>
+            <button class="close-modal" id="closeChatBtn">✕</button>
+        </div>
+        <div class="chat-list" id="chatList"></div>
+    </div>
+
+    <div id="createRequestModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 data-i18n="createNewRequest">Створити новий запит</h3>
+                <button class="close-modal" onclick="document.getElementById('createRequestModal').classList.remove('active')">✕</button>
+            </div>
+            <form id="createRequestForm">
+                <div class="form-group">
+                    <label class="form-label" data-i18n="requestTitle">Заголовок</label>
+                    <input type="text" class="form-input" required placeholder="Короткий опис того, що потрібно">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" data-i18n="requestType">Тип допомоги</label>
+                    <select class="form-input" required>
+                        <option value="housing" data-i18n="optionHousing">Житло</option>
+                        <option value="job" data-i18n="optionJob">Робота</option>
+                        <option value="language" data-i18n="optionLanguage">Мова</option>
+                        <option value="education" data-i18n="optionEducation">Освіта</option>
+                        <option value="other" data-i18n="optionOther">Інше</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" data-i18n="requestDescription">Опис</label>
+                    <textarea class="form-input" rows="5" required placeholder="Детальний опис вашого запиту..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" data-i18n="requestLocation">Локація (де потрібна допомога)</label>
+                    <input type="text" class="form-input" required placeholder="Місто, країна">
+                </div>
+                <div class="form-checkbox">
+                    <input type="checkbox" id="requestPublic">
+                    <label for="requestPublic" data-i18n="makePublic">Зробити видимим для всіх (не тільки моєї мережі)</label>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;" data-i18n="submitRequest">Опублікувати запит</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="inviteModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 data-i18n="invitePeople">Запросити родину та друзів</h3>
+                <button class="close-modal" onclick="document.getElementById('inviteModal').classList.remove('active')">✕</button>
+            </div>
+            <div class="form-group">
+                <label class="form-label" data-i18n="inviteEmail">Електронна пошта</label>
+                <input type="email" class="form-input" id="inviteEmail" placeholder="friend@example.com">
+            </div>
+            <div class="form-group">
+                <label class="form-label" data-i18n="inviteMessage">Персональне повідомлення (опціонально)</label>
+                <textarea class="form-input" id="inviteMessage" rows="4" placeholder="Привіт! Приєднуйся до Help Kin Map..."></textarea>
+            </div>
+            <button class="btn btn-primary" id="sendInviteBtn" style="width: 100%;" data-i18n="sendInvite">📧 Відправити запрошення</button>
+            <div class="divider"><span data-i18n="orShare">або поділитися посиланням</span></div>
+            <div class="share-panel">
+                <input type="text" class="form-input" readonly value="https://helpkinmap.com/invite/abc123xyz" style="flex: 1; margin: 0;">
+                <button class="btn btn-secondary" onclick="navigator.clipboard.writeText('https://helpkinmap.com/invite/abc123xyz')">
+                    📋 <span data-i18n="copy">Копіювати</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
