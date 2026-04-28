@@ -466,7 +466,7 @@ function initializeApp() {
     setupEventListeners();
     loadLanguage();
     checkAuthentication();
-    handleRoute(window.location.pathname);
+    handleRoute(window.location.pathname, window.location.hash.slice(1));
 }
 
 function setupEventListeners() {
@@ -476,13 +476,14 @@ function setupEventListeners() {
         updateLanguage();
     });
 
-    document.querySelectorAll('[data-route]').forEach(element => {
+    document.querySelectorAll('[data-route], [data-page]').forEach(element => {
         element.addEventListener('click', (event) => {
             const path = element.getAttribute('data-route');
             const page = element.getAttribute('data-page');
-            if (path) {
+            if (path || page) {
                 event.preventDefault();
-                navigateTo(path, page);
+                const targetPath = path || '/dashboard';
+                navigateTo(targetPath, page);
             }
         });
     });
@@ -542,13 +543,15 @@ function setupEventListeners() {
     });
 
     window.addEventListener('popstate', () => {
-        handleRoute(window.location.pathname);
+        handleRoute(window.location.pathname, window.location.hash.slice(1));
     });
 }
 
 function navigateTo(path, page = '') {
-    window.history.pushState({ page }, '', path);
-    handleRoute(path, page);
+    const basePath = path.split('#')[0];
+    const url = page ? `${basePath}#${page}` : basePath;
+    window.history.pushState({ page }, '', url);
+    handleRoute(basePath, page);
 }
 
 function replaceState(path) {
@@ -556,21 +559,23 @@ function replaceState(path) {
 }
 
 function handleRoute(path, page = '') {
-    const route = routeMap[path] || routeMap['/'];
+    const normalizedPath = path.split('#')[0];
+    const route = routeMap[normalizedPath] || routeMap['/'];
+    const selectedPage = page || window.location.hash.slice(1);
 
     // Auto-redirect logged-in users to dashboard from landing page
     if (route.screen === 'landing' && isLoggedIn()) {
-        navigateTo('/dashboard');
+        navigateTo('/dashboard', 'home');
         return;
     }
 
     if (route.screen === 'dashboard' && !isLoggedIn()) {
-        navigateTo('/login');
+        navigateTo('/');
         return;
     }
 
     if (route.screen === 'auth' && isLoggedIn()) {
-        navigateTo('/dashboard');
+        navigateTo('/dashboard', 'home');
         return;
     }
 
@@ -584,8 +589,10 @@ function handleRoute(path, page = '') {
 
     if (route.screen === 'dashboard') {
         showDashboard();
-        if (page === 'map') {
-            navigateToPage('map');
+        if (selectedPage) {
+            navigateToPage(selectedPage);
+        } else {
+            navigateToPage('home');
         }
     }
 }

@@ -192,15 +192,6 @@
                 </div>
             </section>
 
-                    </div>
-                    <div class="trust-card" style="--i: 3">
-                        <span>❤️</span>
-                        <strong data-i18n="trustCommunityFirst">Community first</strong>
-                        <p data-i18n="trustCommunityFirstDesc">Designed for Ukrainians abroad with real support where it matters. Together, we're stronger.</p>
-                    </div>
-                </div>
-            </section>
-
             <section class="landing-cta container">
                 <div class="cta-panel">
                     <div>
@@ -227,61 +218,6 @@
             </div>
         </footer>
 
-        <section id="authSection" class="auth-screen hidden">
-            <div class="auth-card">
-                <div class="auth-header">
-                    <h2 data-i18n="welcomeTitle">Ласкаво просимо до Help Kin Map</h2>
-                    <p data-i18n="welcomeSubtitle">З'єднайтесь з родиною та друзями по всьому світу</p>
-                </div>
-
-                <form id="loginForm">
-                    <div class="form-group">
-                        <label class="form-label" data-i18n="email">Електронна пошта</label>
-                        <input type="email" class="form-input" required placeholder="user@example.com">
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label" data-i18n="password">Пароль</label>
-                        <input type="password" class="form-input" required placeholder="••••••••">
-                    </div>
-                    <div class="auth-actions">
-                        <button type="submit" class="btn btn-primary btn-large" data-i18n="login">Увійти</button>
-                        <button type="button" class="btn btn-outline btn-large" id="switchToSignup" data-route="/register" data-i18n="signup">Зареєструватися</button>
-                    </div>
-
-                    <div class="auth-notice">
-                        <p data-i18n="moreLoginMethods">Більше способів входу скоро з'являться</p>
-                    </div>
-                </form>
-
-                <form id="signupForm" class="hidden">
-                    <div class="form-group">
-                        <label class="form-label" data-i18n="fullName">Повне ім'я</label>
-                        <input type="text" name="fullName" class="form-input" required placeholder="Іван Петренко">
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label" data-i18n="email">Електронна пошта</label>
-                        <input type="email" class="form-input" required placeholder="user@example.com">
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label" data-i18n="password">Пароль</label>
-                        <input type="password" class="form-input" required placeholder="••••••••">
-                    </div>
-                    <div class="form-checkbox">
-                        <input type="checkbox" id="gdprConsent" required>
-                        <label for="gdprConsent" data-i18n="gdprConsent">Я погоджуюся з обробкою персональних даних (GDPR)</label>
-                    </div>
-                    <div class="auth-actions">
-                        <button type="submit" class="btn btn-primary btn-large" data-i18n="createAccount">Створити акаунт</button>
-                        <button type="button" class="btn btn-outline btn-large" id="switchToLogin" data-route="/login" data-i18n="login">Увійти</button>
-                    </div>
-
-                    <div class="auth-notice">
-                        <p data-i18n="moreLoginMethods">Більше способів входу скоро з'являться</p>
-                    </div>
-                </form>
-            </div>
-        </section>
-
         <section id="dashboardScreen" class="hidden">
             <div class="container">
                 <div class="dashboard">
@@ -294,27 +230,27 @@
                             </div>
                         </div>
                         <ul class="sidebar-nav">
-                            <li><a href="#" class="active" data-page="home">
+                            <li><a href="/dashboard#home" class="active" data-route="/dashboard" data-page="home">
                                 <span>🏠</span>
                                 <span data-i18n="navHome">Головна</span>
                             </a></li>
-                            <li><a href="#" data-page="map">
+                            <li><a href="/dashboard#map" data-route="/dashboard" data-page="map">
                                 <span>🗺️</span>
                                 <span data-i18n="navMap">Карта допомоги</span>
                             </a></li>
-                            <li><a href="#" data-page="requests">
+                            <li><a href="/dashboard#requests" data-route="/dashboard" data-page="requests">
                                 <span>📋</span>
                                 <span data-i18n="navRequests">Запити на допомогу</span>
                             </a></li>
-                            <li><a href="#" data-page="network">
+                            <li><a href="/dashboard#network" data-route="/dashboard" data-page="network">
                                 <span>👥</span>
                                 <span data-i18n="navNetwork">Моя мережа</span>
                             </a></li>
-                            <li><a href="#" data-page="messages">
+                            <li><a href="/dashboard#messages" data-route="/dashboard" data-page="messages">
                                 <span>💬</span>
                                 <span data-i18n="navMessages">Повідомлення</span>
                             </a></li>
-                            <li><a href="#" data-page="profile">
+                            <li><a href="/dashboard#profile" data-route="/dashboard" data-page="profile">
                                 <span>⚙️</span>
                                 <span data-i18n="navProfile">Профіль</span>
                             </a></li>
@@ -464,6 +400,61 @@
             </div>
         </section>
     </main>
+
+    <section id="authSection" class="auth-screen hidden">
+        <div class="auth-card">
+            <div class="auth-header">
+                <h2 data-i18n="welcomeTitle">Ласкаво просимо до Help Kin Map</h2>
+                <p data-i18n="welcomeSubtitle">З'єднайтесь з родиною та друзями по всьому світу</p>
+            </div>
+
+            <form id="loginForm">
+                <div class="form-group">
+                    <label class="form-label" data-i18n="email">Електронна пошта</label>
+                    <input type="email" class="form-input" required placeholder="user@example.com">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" data-i18n="password">Пароль</label>
+                    <input type="password" class="form-input" required placeholder="••••••••">
+                </div>
+                <div class="auth-actions">
+                    <button type="submit" class="btn btn-primary btn-large" data-i18n="login">Увійти</button>
+                    <button type="button" class="btn btn-outline btn-large" id="switchToSignup" data-route="/register" data-i18n="signup">Зареєструватися</button>
+                </div>
+
+                <div class="auth-notice">
+                    <p data-i18n="moreLoginMethods">Більше способів входу скоро з'являться</p>
+                </div>
+            </form>
+
+            <form id="signupForm" class="hidden">
+                <div class="form-group">
+                    <label class="form-label" data-i18n="fullName">Повне ім'я</label>
+                    <input type="text" name="fullName" class="form-input" required placeholder="Іван Петренко">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" data-i18n="email">Електронна пошта</label>
+                    <input type="email" class="form-input" required placeholder="user@example.com">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" data-i18n="password">Пароль</label>
+                    <input type="password" class="form-input" required placeholder="••••••••">
+                </div>
+                <div class="form-checkbox">
+                    <input type="checkbox" id="gdprConsent" required>
+                    <label for="gdprConsent" data-i18n="gdprConsent">Я погоджуюся з обробкою персональних даних (GDPR)</label>
+                </div>
+                <div class="auth-actions">
+                    <button type="submit" class="btn btn-primary btn-large" data-i18n="createAccount">Створити акаунт</button>
+                    <button type="button" class="btn btn-outline btn-large" id="switchToLogin" data-route="/login" data-i18n="login">Увійти</button>
+                </div>
+
+                <div class="auth-notice">
+                    <p data-i18n="moreLoginMethods">Більше способів входу скоро з'являться</p>
+                </div>
+            </form>
+        </div>
+    </section>
 
     <div id="chatSidebar" class="chat-sidebar">
         <div class="chat-header">
