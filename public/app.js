@@ -472,7 +472,7 @@ function initializeApp() {
 function setupEventListeners() {
     document.getElementById('langSwitch')?.addEventListener('change', function(e) {
         currentLang = e.target.value;
-        localStorage.setItem('helpKinLanguage', currentLang);
+        localStorage.setItem('lang', currentLang);
         updateLanguage();
     });
 
@@ -777,8 +777,10 @@ function handleSignup(e) {
 }
 
 function handleLogout() {
+    const savedLang = localStorage.getItem('lang');
     localStorage.removeItem('isLoggedIn');
     localStorage.removeItem('currentUser');
+    localStorage.setItem('lang', savedLang);
     currentUser = null;
     clearUserDisplay();
     navigateTo('/');
@@ -1078,17 +1080,12 @@ function openChatConversation(chatId) {
 }
 
 function loadLanguage() {
-    const savedLang = localStorage.getItem('helpKinLanguage');
+    const savedLang = localStorage.getItem('lang');
     if (savedLang && translations[savedLang]) {
         currentLang = savedLang;
     } else {
-        const browserLang = (navigator.language || navigator.userLanguage || '').toLowerCase();
-        if (browserLang.startsWith('en')) {
-            currentLang = 'en';
-        } else {
-            currentLang = 'uk';
-        }
-        localStorage.setItem('helpKinLanguage', currentLang);
+        currentLang = 'uk';
+        localStorage.setItem('lang', currentLang);
     }
 
     const langSwitch = document.getElementById('langSwitch');
