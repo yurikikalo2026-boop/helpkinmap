@@ -7,8 +7,6 @@ const translations = {
         welcomeTitle: "Ласкаво просимо до Help Kin Map",
         welcomeSubtitle: "З'єднайтесь з родиною та друзями по всьому світу",
         heroEyebrow: "Надійна допомога для українців за кордоном",
-        heroTitle: "Знайдіть перевірену допомогу за кордоном",
-        heroSubtitle: "Житло, робота, громади діаспори й люди поруч. З'єднуйтесь із тими, хто розуміє вашу дорогу.",
         heroNeedHelp: "Потрібна допомога",
         heroWantToHelp: "Хочу допомогти",
         heroExploreMap: "Дослідити карту",
@@ -52,6 +50,36 @@ const translations = {
         trustCommunityFirstDesc: "Розроблено для українців за кордоном з реальною підтримкою там, де це важливо. Разом ми сильніші.",
         ctaGetStarted: "Почати",
         ctaLogin: "Увійти",
+        heroBadge: "Довіряють українській діаспорі",
+        heroTitle: "Знайдіть свою <span class=\"highlight\">безпечну гавань</span><br><span class=\"subtitle\">у новій землі</span>",
+        heroSubtitle: "Коли все здається невизначеним, зв'яжіться з перевіреними помічниками, які розуміють вашу подорож. Житло, робота, громади та надійні люди поруч.",
+        trustTitle: "Підтримано спільнотами по всьому світу",
+        trustSubtitle: "Справжні люди, реальна допомога, реальний вплив",
+        trustNetwork: "Глобальна мережа",
+        trustNetworkDesc: "42 країни, 127 активних помічників, що зростає щодня",
+        finalCtaTitle: "Готові знайти свою спільноту?",
+        finalCtaSubtitle: "Приєднуйтесь до Help Kin Map і знайдіть підтримку, дружбу та надію.",
+        finalCtaPrimary: "Почати подорож",
+        finalCtaSecondary: "Дослідити карту",
+        emailPlaceholder: "Введіть електронну пошту",
+        passwordPlaceholder: "Введіть пароль",
+        fullNamePlaceholder: "Іван Петренко",
+        requestTitlePlaceholder: "Короткий опис того, що потрібно",
+        requestDescriptionPlaceholder: "Детальний опис вашого запиту...",
+        requestLocationPlaceholder: "Місто, країна",
+        inviteEmailPlaceholder: "friend@example.com",
+        inviteMessagePlaceholder: "Привіт! Приєднуйся до Help Kin Map...",
+        requestHelpTitle: "Запросити допомогу",
+        requestHelpCity: "Місто",
+        requestHelpCategory: "Категорія",
+        requestHelpMessage: "Повідомлення",
+        requestHelpMessagePlaceholder: "Розкажіть, що вам потрібно...",
+        requestHelpUrgent: "Терміновий запит",
+        requestHelpCancel: "Скасувати",
+        requestHelpSend: "Відправити запит",
+        optionDocuments: "Документи",
+        optionCommunity: "Спільнота",
+        optionTransport: "Транспорт",
         activeCitiesLabel: "Активні спільноти",
         footerSupport: "Підтримка людей за кордоном",
         moreLoginMethods: "Більше способів входу скоро з'являться",
@@ -65,9 +93,9 @@ const translations = {
         createAccount: "Створити акаунт",
         haveAccount: "Вже є акаунт?",
         loginLink: "Увійти",
-        accountCreated: "Account created successfully.",
-        welcomeBack: "Welcome back!",
-        logoutMessage: "You have been logged out",
+        accountCreated: "Акаунт успішно створено.",
+        welcomeBack: "Ласкаво просимо назад!",
+        logoutMessage: "Ви вийшли з системи",
         userExists: "Користувач з такою електронною поштою вже існує",
         welcome: "Ласкаво просимо",
         dashboardTitle: "Ласкаво просимо",
@@ -132,7 +160,13 @@ const translations = {
         respond: "Відповісти",
         statusOpen: "Відкрито",
         statusInProgress: "В процесі",
-        statusClosed: "Закрито"
+        statusClosed: "Закрито",
+        messageBtn: "Написати",
+        connectBtn: "Зв'язатися",
+        respondBtn: "Відповісти",
+        viewBtn: "Переглянути",
+        requestSent: "Ваш запит надіслано.",
+        chatOpening: "Відкриття чату..."
     },
     en: {
         appName: "Help Kin Map",
@@ -142,8 +176,6 @@ const translations = {
         welcomeTitle: "Welcome to Help Kin Map",
         welcomeSubtitle: "Connect with family and friends worldwide",
         heroEyebrow: "Trusted help for Ukrainians abroad",
-        heroTitle: "Find trusted help abroad",
-        heroSubtitle: "Housing, jobs, diaspora communities, trusted people nearby. Connect with helpers who understand your journey.",
         heroNeedHelp: "Need Help",
         heroWantToHelp: "Want to Help",
         heroExploreMap: "Explore Map",
@@ -187,6 +219,36 @@ const translations = {
         readyCtaSubtitle: "Join Help Kin Map and connect with a trusted diaspora network worldwide.",
         ctaGetStarted: "Get Started",
         ctaLogin: "Login",
+        heroBadge: "Trusted by Ukrainian diaspora",
+        heroTitle: "Find Your <span class=\"highlight\">Safe Harbor</span><br><span class=\"subtitle\">in a New Land</span>",
+        heroSubtitle: "When everything feels uncertain, connect with verified helpers who understand your journey. Housing, jobs, communities, and trusted people nearby.",
+        trustTitle: "Trusted by communities worldwide",
+        trustSubtitle: "Real people, real help, real impact",
+        trustNetwork: "Global Network",
+        trustNetworkDesc: "42 countries, 127 active helpers, growing every day",
+        finalCtaTitle: "Ready to find your community?",
+        finalCtaSubtitle: "Join Help Kin Map and find support, friendship, and hope.",
+        finalCtaPrimary: "Start Your Journey",
+        finalCtaSecondary: "Explore the Map",
+        emailPlaceholder: "Enter your email",
+        passwordPlaceholder: "Enter your password",
+        fullNamePlaceholder: "John Doe",
+        requestTitlePlaceholder: "Short summary of what you need",
+        requestDescriptionPlaceholder: "Describe your request in detail...",
+        requestLocationPlaceholder: "City, country",
+        inviteEmailPlaceholder: "friend@example.com",
+        inviteMessagePlaceholder: "Hi! Join Help Kin Map...",
+        requestHelpTitle: "Request Help",
+        requestHelpCity: "City",
+        requestHelpCategory: "Category",
+        requestHelpMessage: "Message",
+        requestHelpMessagePlaceholder: "Tell us what you need...",
+        requestHelpUrgent: "Urgent request",
+        requestHelpCancel: "Cancel",
+        requestHelpSend: "Send Request",
+        optionDocuments: "Documents",
+        optionCommunity: "Community",
+        optionTransport: "Transport",
         activeCitiesLabel: "Active Communities",
         footerSupport: "Support people abroad",
         moreLoginMethods: "More login methods coming soon",
@@ -267,7 +329,13 @@ const translations = {
         respond: "Respond",
         statusOpen: "Open",
         statusInProgress: "In Progress",
-        statusClosed: "Closed"
+        statusClosed: "Closed",
+        messageBtn: "Message",
+        connectBtn: "Connect",
+        respondBtn: "Respond",
+        viewBtn: "View",
+        requestSent: "Your request has been sent.",
+        chatOpening: "Opening chat..."
     }
 };
 
@@ -470,6 +538,16 @@ function initializeApp() {
 }
 
 function setupEventListeners() {
+    document.querySelectorAll('.lang-btn').forEach(button => {
+        button.addEventListener('click', function() {
+            const selectedLang = button.getAttribute('data-lang');
+            if (!selectedLang) return;
+            currentLang = selectedLang;
+            localStorage.setItem('lang', currentLang);
+            updateLanguage();
+        });
+    });
+
     document.getElementById('langSwitch')?.addEventListener('change', function(e) {
         currentLang = e.target.value;
         localStorage.setItem('lang', currentLang);
@@ -902,8 +980,8 @@ function renderHelpersGrid() {
             `).join('')}</div>
             <p class="text-secondary" style="margin-bottom: var(--spacing-md);">${user.offerDetails}</p>
             <div class="card-actions">
-                <button class="btn btn-primary btn-sm" onclick="connectWithUser(${user.id})">${user.isConnected ? '💬 ' + (currentLang === 'uk' ? 'Написати' : 'Message') : '🤝 ' + (currentLang === 'uk' ? 'Зв\'язатися' : 'Connect')}</button>
-                <button class="btn btn-secondary btn-sm">👁️ ${currentLang === 'uk' ? 'Переглянути' : 'View'}</button>
+                <button class="btn btn-primary btn-sm" onclick="connectWithUser(${user.id})">${user.isConnected ? '💬 ' + translations[currentLang].messageBtn : '🤝 ' + translations[currentLang].connectBtn}</button>
+                <button class="btn btn-secondary btn-sm">👁️ ${translations[currentLang].viewBtn}</button>
             </div>
         </div>
     `).join('');
@@ -922,11 +1000,14 @@ function renderRecentRequests() {
                         <span>🕐 ${request.date}</span>
                     </div>
                 </div>
-                <span class="request-status status-${request.status}">${currentLang === 'uk' ? request.status === 'open' ? 'Відкрито' : request.status === 'in-progress' ? 'В процесі' : 'Закрито' : request.status}</span>
+                <span class="request-status status-${request.status}">${(() => {
+                    let statusKey = 'status' + request.status.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join('');
+                    return translations[currentLang][statusKey];
+                })()}</span>
             </div>
             <div class="request-description">${request.description}</div>
             <div class="request-actions">
-                <button class="btn btn-primary btn-sm">💬 ${currentLang === 'uk' ? 'Відповісти' : 'Respond'} (${request.responses})</button>
+                <button class="btn btn-primary btn-sm">💬 ${translations[currentLang].respondBtn} (${request.responses})</button>
             </div>
         </div>
     `).join('');
@@ -945,11 +1026,14 @@ function renderRequestsList() {
                         <span>🕐 ${request.date}</span>
                     </div>
                 </div>
-                <span class="request-status status-${request.status}">${currentLang === 'uk' ? request.status === 'open' ? 'Відкрито' : request.status === 'in-progress' ? 'В процесі' : 'Закрито' : request.status}</span>
+                <span class="request-status status-${request.status}">${(() => {
+                    let statusKey = 'status' + request.status.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join('');
+                    return translations[currentLang][statusKey];
+                })()}</span>
             </div>
             <div class="request-description">${request.description}</div>
             <div class="request-actions">
-                <button class="btn btn-primary btn-sm">💬 ${currentLang === 'uk' ? 'Відповісти' : 'Respond'} (${request.responses})</button>
+                <button class="btn btn-primary btn-sm">💬 ${translations[currentLang].respondBtn} (${request.responses})</button>
             </div>
         </div>
     `).join('');
@@ -973,8 +1057,8 @@ function renderNetworkGrid() {
                 <span class="tag tag-${offer}">${helpIcons[offer]} ${offer}</span>
             `).join('')}</div>
             <div class="card-actions">
-                <button class="btn btn-primary btn-sm" onclick="openChat(${user.id})">💬 ${currentLang === 'uk' ? 'Написати' : 'Message'}</button>
-                <button class="btn btn-secondary btn-sm">👁️ ${currentLang === 'uk' ? 'Переглянути' : 'View'}</button>
+                <button class="btn btn-primary btn-sm" onclick="openChat(${user.id})">💬 ${translations[currentLang].messageBtn}</button>
+                <button class="btn btn-secondary btn-sm">👁️ ${translations[currentLang].viewBtn}</button>
             </div>
         </div>
     `).join('');
@@ -1075,7 +1159,7 @@ function submitRequestHelp() {
     localStorage.setItem('helpKinDemoRequests', JSON.stringify(requestList));
 
     closeRequestHelpModal();
-    showToast('Your request has been sent.', 'success');
+    showToast(translations[currentLang].requestSent, 'success');
 }
 
 function openChat(userId) {
@@ -1083,39 +1167,53 @@ function openChat(userId) {
 }
 
 function openChatConversation(chatId) {
-    showToast('Відкриття чату...', 'info');
+    showToast(translations[currentLang].chatOpening, 'info');
 }
 
 function loadLanguage() {
     const savedLang = localStorage.getItem('lang');
-    if (savedLang && translations[savedLang]) {
-        currentLang = savedLang;
-    } else {
-        currentLang = 'uk';
+    currentLang = savedLang && translations[savedLang] ? savedLang : 'uk';
+    if (!savedLang) {
         localStorage.setItem('lang', currentLang);
     }
-
-    const langSwitch = document.getElementById('langSwitch');
-    if (langSwitch) {
-        langSwitch.value = currentLang;
-    }
-
-    document.documentElement.lang = currentLang === 'uk' ? 'uk' : 'en';
-    updateLanguage();
+    applyTranslations();
 }
 
-function updateLanguage() {
+function applyTranslations() {
     document.documentElement.lang = currentLang === 'uk' ? 'uk' : 'en';
     document.querySelectorAll('[data-i18n]').forEach(element => {
         const key = element.getAttribute('data-i18n');
-        const translation = translations[currentLang][key];
-        if (!translation) return;
-        if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA' || element.tagName === 'SELECT') {
+        let translation = translations[currentLang][key] || translations.uk[key];
+        if (!translation) {
+            console.warn(`Missing translation for key: ${key}`);
+            translation = key; // Fallback to key name to avoid empty text
+        }
+        if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
             element.placeholder = translation;
-        } else {
+        } else if (element.tagName === 'SELECT') {
+            // SELECT elements use option labels, not placeholder
+            element.dataset.i18nValue = translation;
+        } else if (/<[^>]+>/.test(translation)) {
+            element.innerHTML = translation;
+        } else if (element.children.length === 0) {
             element.textContent = translation;
+        } else {
+            const textNodes = Array.from(element.childNodes).filter(node => node.nodeType === Node.TEXT_NODE);
+            if (textNodes.length === 0) {
+                element.textContent = translation;
+            } else {
+                const lastTextNode = textNodes[textNodes.length - 1];
+                lastTextNode.textContent = translation;
+            }
         }
     });
+    document.querySelectorAll('[data-lang]').forEach(button => {
+        button.classList.toggle('active', button.getAttribute('data-lang') === currentLang);
+    });
+}
+
+function updateLanguage() {
+    applyTranslations();
 }
 
 function showToast(message, type = 'info') {

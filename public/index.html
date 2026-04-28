@@ -25,10 +25,10 @@
             </a>
             <nav class="nav-actions">
                 <div class="user-info hidden" id="userEmail"></div>
-                <select class="lang-switch" id="langSwitch">
-                    <option value="uk">🇺🇦 Українська</option>
-                    <option value="en">🇬🇧 English</option>
-                </select>
+                <div class="lang-switch" id="langSwitch">
+                    <button type="button" class="btn btn-outline lang-btn" data-lang="uk">UA</button>
+                    <button type="button" class="btn btn-outline lang-btn" data-lang="en">EN</button>
+                </div>
                 <button class="btn btn-outline" id="loginBtn" data-route="/login" data-i18n="login">Увійти</button>
                 <button class="btn btn-primary" id="signupBtn" data-route="/register" data-i18n="signup">Реєстрація</button>
                 <button class="btn btn-outline hidden" id="logoutBtn" data-i18n="logout">Вийти</button>
@@ -44,22 +44,22 @@
                     <div class="hero-content">
                         <div class="hero-badge">
                             <span class="badge-icon">🇺🇦</span>
-                            <span class="badge-text">Trusted by Ukrainian diaspora</span>
+                            <span class="badge-text" data-i18n="heroBadge">Trusted by Ukrainian diaspora</span>
                         </div>
-                        <h1 class="hero-title">
+                        <h1 class="hero-title" data-i18n="heroTitle">
                             Find Your <span class="highlight">Safe Harbor</span><br>
                             <span class="subtitle">in a New Land</span>
                         </h1>
-                        <p class="hero-description">
+                        <p class="hero-description" data-i18n="heroSubtitle">
                             When everything feels uncertain, connect with verified helpers who understand your journey.
                             Housing, jobs, communities, and trusted people nearby.
                         </p>
                         <div class="hero-actions">
-                            <a href="/register" class="btn btn-primary btn-lg" data-route="/register">
+                            <a href="/register" class="btn btn-primary btn-lg" data-route="/register" data-i18n="heroNeedHelp">
                                 <span class="btn-icon">🏠</span>
                                 Find Help Now
                             </a>
-                            <a href="/register" class="btn btn-secondary btn-lg" data-route="/register">
+                            <a href="/register" class="btn btn-secondary btn-lg" data-route="/register" data-i18n="heroWantToHelp">
                                 <span class="btn-icon">🤝</span>
                                 Offer Support
                             </a>
@@ -109,39 +109,39 @@
             <section class="categories-section">
                 <div class="categories-container">
                     <div class="categories-header">
-                        <h2>Help Categories</h2>
-                        <p>Find the exact support you need faster. Real help from real people.</p>
+                        <h2 data-i18n="helpCategories">Help Categories</h2>
+                        <p data-i18n="helpCategoriesDescription">Find the exact support you need faster. Real help from real people.</p>
                     </div>
                     <div class="categories-grid">
                         <div class="category-card">
                             <div class="category-icon">🏠</div>
-                            <h3>Housing</h3>
-                            <p>Temporary stays, apartments, shared homes</p>
+                            <h3 data-i18n="categoryHousing">Housing</h3>
+                            <p data-i18n="categoryHousingDesc">Temporary stays, apartments, shared homes</p>
                         </div>
                         <div class="category-card">
                             <div class="category-icon">💼</div>
-                            <h3>Jobs</h3>
-                            <p>Job leads, career advice, networking</p>
+                            <h3 data-i18n="categoryJobs">Jobs</h3>
+                            <p data-i18n="categoryJobsDesc">Job leads, career advice, networking</p>
                         </div>
                         <div class="category-card">
                             <div class="category-icon">📄</div>
-                            <h3>Documents</h3>
-                            <p>Visa help, paperwork, translations</p>
+                            <h3 data-i18n="categoryDocuments">Documents</h3>
+                            <p data-i18n="categoryDocumentsDesc">Visa help, paperwork, translations</p>
                         </div>
                         <div class="category-card">
                             <div class="category-icon">⚖️</div>
-                            <h3>Legal Help</h3>
-                            <p>Legal advice, immigration support</p>
+                            <h3 data-i18n="categoryLegal">Legal Help</h3>
+                            <p data-i18n="categoryLegalDesc">Legal advice, immigration support</p>
                         </div>
                         <div class="category-card">
                             <div class="category-icon">🗣️</div>
-                            <h3>Language</h3>
-                            <p>Language lessons, cultural guidance</p>
+                            <h3 data-i18n="categoryLanguage">Language</h3>
+                            <p data-i18n="categoryLanguageDesc">Language lessons, cultural guidance</p>
                         </div>
                         <div class="category-card">
                             <div class="category-icon">👥</div>
-                            <h3>Community</h3>
-                            <p>Diaspora connections, local events</p>
+                            <h3 data-i18n="categoryCommunity">Community</h3>
+                            <p data-i18n="categoryCommunityDesc">Diaspora connections, local events</p>
                         </div>
                     </div>
                 </div>
@@ -151,24 +151,24 @@
             <section class="trust-section">
                 <div class="trust-container">
                     <div class="trust-header">
-                        <h2>Trusted by Communities Worldwide</h2>
-                        <p>Real people, real help, real impact</p>
+                        <h2 data-i18n="trustTitle">Trusted by Communities Worldwide</h2>
+                        <p data-i18n="trustSubtitle">Real people, real help, real impact</p>
                     </div>
                     <div class="trust-grid">
                         <div class="trust-card">
                             <div class="trust-icon">🛡️</div>
-                            <h3>Verified Helpers</h3>
-                            <p>Every helper is personally verified by our community moderators</p>
+                            <h3 data-i18n="trustVerifiedProfiles">Verified Helpers</h3>
+                            <p data-i18n="trustVerifiedProfilesDesc">Every helper is personally verified by our community moderators</p>
                         </div>
                         <div class="trust-card">
                             <div class="trust-icon">💬</div>
-                            <h3>Safe Communication</h3>
-                            <p>End-to-end encrypted messaging keeps your conversations private</p>
+                            <h3 data-i18n="trustSecureMessaging">Safe Communication</h3>
+                            <p data-i18n="trustSecureMessagingDesc">End-to-end encrypted messaging keeps your conversations private</p>
                         </div>
                         <div class="trust-card">
                             <div class="trust-icon">🌍</div>
-                            <h3>Global Network</h3>
-                            <p>42 countries, 127 active helpers, growing every day</p>
+                            <h3 data-i18n="trustNetwork">Global Network</h3>
+                            <p data-i18n="trustNetworkDesc">42 countries, 127 active helpers, growing every day</p>
                         </div>
                     </div>
                 </div>
@@ -178,13 +178,13 @@
             <section class="final-cta-section">
                 <div class="final-cta-container">
                     <div class="final-cta-content">
-                        <h2>Ready to Find Your Community?</h2>
-                        <p>Join thousands who've found support, friendship, and hope through Help Kin Map.</p>
+                        <h2 data-i18n="finalCtaTitle">Ready to Find Your Community?</h2>
+                        <p data-i18n="finalCtaSubtitle">Join thousands who've found support, friendship, and hope through Help Kin Map.</p>
                         <div class="final-cta-actions">
-                            <a href="/register" class="btn btn-primary btn-lg" data-route="/register">
+                            <a href="/register" class="btn btn-primary btn-lg" data-route="/register" data-i18n="finalCtaPrimary">
                                 Start Your Journey
                             </a>
-                            <a href="/dashboard" class="btn btn-outline btn-lg" data-route="/dashboard" data-page="map">
+                            <a href="/dashboard" class="btn btn-outline btn-lg" data-route="/dashboard" data-page="map" data-i18n="finalCtaSecondary">
                                 Explore the Map
                             </a>
                         </div>
@@ -211,7 +211,7 @@
                 <div class="footer-content">
                     <div class="footer-brand">
                         <div class="logo-icon">🤝</div>
-                        <span>Help Kin Map</span>
+                        <span data-i18n="appName">Help Kin Map</span>
                     </div>
                     <p data-i18n="footerSupport">Support people abroad</p>
                 </div>
@@ -411,11 +411,11 @@
             <form id="loginForm">
                 <div class="form-group">
                     <label class="form-label" data-i18n="email">Електронна пошта</label>
-                    <input type="email" class="form-input" required placeholder="user@example.com">
+                    <input type="email" class="form-input" required data-i18n="emailPlaceholder" placeholder="user@example.com">
                 </div>
                 <div class="form-group">
                     <label class="form-label" data-i18n="password">Пароль</label>
-                    <input type="password" class="form-input" required placeholder="••••••••">
+                    <input type="password" class="form-input" required data-i18n="passwordPlaceholder" placeholder="••••••••">
                 </div>
                 <div class="auth-actions">
                     <button type="submit" class="btn btn-primary btn-large" data-i18n="login">Увійти</button>
@@ -430,15 +430,15 @@
             <form id="signupForm" class="hidden">
                 <div class="form-group">
                     <label class="form-label" data-i18n="fullName">Повне ім'я</label>
-                    <input type="text" name="fullName" class="form-input" required placeholder="Іван Петренко">
+                    <input type="text" name="fullName" class="form-input" required data-i18n="fullNamePlaceholder" placeholder="Іван Петренко">
                 </div>
                 <div class="form-group">
                     <label class="form-label" data-i18n="email">Електронна пошта</label>
-                    <input type="email" class="form-input" required placeholder="user@example.com">
+                    <input type="email" class="form-input" required data-i18n="emailPlaceholder" placeholder="user@example.com">
                 </div>
                 <div class="form-group">
                     <label class="form-label" data-i18n="password">Пароль</label>
-                    <input type="password" class="form-input" required placeholder="••••••••">
+                    <input type="password" class="form-input" required data-i18n="passwordPlaceholder" placeholder="••••••••">
                 </div>
                 <div class="form-checkbox">
                     <input type="checkbox" id="gdprConsent" required>
@@ -473,7 +473,7 @@
             <form id="createRequestForm">
                 <div class="form-group">
                     <label class="form-label" data-i18n="requestTitle">Заголовок</label>
-                    <input type="text" class="form-input" required placeholder="Короткий опис того, що потрібно">
+                    <input type="text" class="form-input" required data-i18n="requestTitlePlaceholder" placeholder="Короткий опис того, що потрібно">
                 </div>
                 <div class="form-group">
                     <label class="form-label" data-i18n="requestType">Тип допомоги</label>
@@ -487,11 +487,11 @@
                 </div>
                 <div class="form-group">
                     <label class="form-label" data-i18n="requestDescription">Опис</label>
-                    <textarea class="form-input" rows="5" required placeholder="Детальний опис вашого запиту..."></textarea>
+                    <textarea class="form-input" rows="5" required data-i18n="requestDescriptionPlaceholder" placeholder="Детальний опис вашого запиту..."></textarea>
                 </div>
                 <div class="form-group">
                     <label class="form-label" data-i18n="requestLocation">Локація (де потрібна допомога)</label>
-                    <input type="text" class="form-input" required placeholder="Місто, країна">
+                    <input type="text" class="form-input" required data-i18n="requestLocationPlaceholder" placeholder="Місто, країна">
                 </div>
                 <div class="form-checkbox">
                     <input type="checkbox" id="requestPublic">
@@ -510,11 +510,11 @@
             </div>
             <div class="form-group">
                 <label class="form-label" data-i18n="inviteEmail">Електронна пошта</label>
-                <input type="email" class="form-input" id="inviteEmail" placeholder="friend@example.com">
+                <input type="email" class="form-input" id="inviteEmail" data-i18n="inviteEmailPlaceholder" placeholder="friend@example.com">
             </div>
             <div class="form-group">
                 <label class="form-label" data-i18n="inviteMessage">Персональне повідомлення (опціонально)</label>
-                <textarea class="form-input" id="inviteMessage" rows="4" placeholder="Привіт! Приєднуйся до Help Kin Map..."></textarea>
+                <textarea class="form-input" id="inviteMessage" rows="4" data-i18n="inviteMessagePlaceholder" placeholder="Привіт! Приєднуйся до Help Kin Map..."></textarea>
             </div>
             <button class="btn btn-primary" id="sendInviteBtn" style="width: 100%;" data-i18n="sendInvite">📧 Відправити запрошення</button>
             <div class="divider"><span data-i18n="orShare">або поділитися посиланням</span></div>
@@ -530,37 +530,37 @@
     <div id="requestHelpModal" class="modal">
         <div class="modal-content modal-request-help">
             <div class="modal-header">
-                <h3>Request Help</h3>
+                <h3 data-i18n="requestHelpTitle">Request Help</h3>
                 <button class="close-modal" onclick="closeRequestHelpModal()">✕</button>
             </div>
             <div class="form-group">
-                <label class="form-label">City</label>
+                <label class="form-label" data-i18n="requestHelpCity">City</label>
                 <input type="text" class="form-input" id="requestHelpCity" readonly>
             </div>
             <div class="form-group">
-                <label class="form-label">Category</label>
+                <label class="form-label" data-i18n="requestHelpCategory">Category</label>
                 <select class="form-input" id="requestHelpCategory">
-                    <option value="Housing">Housing</option>
-                    <option value="Jobs">Jobs</option>
-                    <option value="Documents">Documents</option>
-                    <option value="Language">Language</option>
-                    <option value="Community">Community</option>
-                    <option value="Transport">Transport</option>
+                    <option value="Housing" data-i18n="optionHousing">Housing</option>
+                    <option value="Jobs" data-i18n="optionJob">Jobs</option>
+                    <option value="Documents" data-i18n="optionDocuments">Documents</option>
+                    <option value="Language" data-i18n="optionLanguage">Language</option>
+                    <option value="Community" data-i18n="optionCommunity">Community</option>
+                    <option value="Transport" data-i18n="optionTransport">Transport</option>
                 </select>
             </div>
             <div class="form-group">
-                <label class="form-label">Message</label>
-                <textarea class="form-input" id="requestHelpMessage" rows="4" placeholder="Tell us what you need..."></textarea>
+                <label class="form-label" data-i18n="requestHelpMessage">Message</label>
+                <textarea class="form-input" id="requestHelpMessage" rows="4" data-i18n="requestHelpMessagePlaceholder" placeholder="Tell us what you need..."></textarea>
             </div>
             <div class="form-group checkbox-group">
                 <label class="checkbox-item">
                     <input type="checkbox" id="requestHelpUrgent">
-                    <span>Urgent request</span>
+                    <span data-i18n="requestHelpUrgent">Urgent request</span>
                 </label>
             </div>
             <div class="modal-actions">
-                <button class="btn btn-secondary" onclick="closeRequestHelpModal()">Cancel</button>
-                <button class="btn btn-primary" id="sendRequestHelpBtn">Send Request</button>
+                <button class="btn btn-secondary" onclick="closeRequestHelpModal()" data-i18n="requestHelpCancel">Cancel</button>
+                <button class="btn btn-primary" id="sendRequestHelpBtn" data-i18n="requestHelpSend">Send Request</button>
             </div>
         </div>
     </div>
