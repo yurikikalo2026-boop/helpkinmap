@@ -54,6 +54,7 @@ const translations = {
         ctaLogin: "Увійти",
         activeCitiesLabel: "Активні спільноти",
         footerSupport: "Підтримка людей за кордоном",
+        moreLoginMethods: "Більше способів входу скоро з'являться",
         email: "Електронна пошта",
         password: "Пароль",
         orContinueWith: "або продовжити з",
@@ -64,6 +65,11 @@ const translations = {
         createAccount: "Створити акаунт",
         haveAccount: "Вже є акаунт?",
         loginLink: "Увійти",
+        accountCreated: "Account created successfully.",
+        welcomeBack: "Welcome back!",
+        logoutMessage: "You have been logged out",
+        userExists: "Користувач з такою електронною поштою вже існує",
+        welcome: "Ласкаво просимо",
         dashboardTitle: "Ласкаво просимо",
         navHome: "Головна",
         navMap: "Карта допомоги",
@@ -183,6 +189,7 @@ const translations = {
         ctaLogin: "Login",
         activeCitiesLabel: "Active Communities",
         footerSupport: "Support people abroad",
+        moreLoginMethods: "More login methods coming soon",
         email: "Email",
         password: "Password",
         orContinueWith: "or continue with",
@@ -193,6 +200,11 @@ const translations = {
         createAccount: "Create Account",
         haveAccount: "Already have an account?",
         loginLink: "Log in",
+        accountCreated: "Account created successfully.",
+        welcomeBack: "Welcome back!",
+        logoutMessage: "You have been logged out",
+        userExists: "User already exists with this email",
+        welcome: "Welcome",
         dashboardTitle: "Welcome",
         navHome: "Home",
         navMap: "Help Map",
@@ -258,6 +270,49 @@ const translations = {
         statusClosed: "Closed"
     }
 };
+
+const mapMarkers = [
+    {
+        id: 'berlin',
+        city: 'Berlin',
+        country: 'Germany',
+        lat: 52.520008,
+        lng: 13.404954,
+        highlights: ['Jobs', 'Language help', 'Families nearby']
+    },
+    {
+        id: 'warsaw',
+        city: 'Warsaw',
+        country: 'Poland',
+        lat: 52.229676,
+        lng: 21.012229,
+        highlights: ['Housing available', 'Jobs available', 'Ukrainian community', 'Documents help']
+    },
+    {
+        id: 'prague',
+        city: 'Prague',
+        country: 'Czech Republic',
+        lat: 50.075538,
+        lng: 14.4378,
+        highlights: ['Housing', 'Transport help']
+    },
+    {
+        id: 'munich',
+        city: 'Munich',
+        country: 'Germany',
+        lat: 48.135125,
+        lng: 11.581981,
+        highlights: ['Housing', 'Jobs', 'Community']
+    },
+    {
+        id: 'toronto',
+        city: 'Toronto',
+        country: 'Canada',
+        lat: 43.65107,
+        lng: -79.347015,
+        highlights: ['Housing', 'Jobs', 'Community']
+    }
+];
 
 const sampleUsers = [
     {
@@ -469,6 +524,11 @@ function setupEventListeners() {
         document.getElementById('createRequestModal').classList.add('active');
     });
 
+    document.getElementById('sendRequestHelpBtn')?.addEventListener('click', (e) => {
+        e.preventDefault();
+        submitRequestHelp();
+    });
+
     document.getElementById('inviteBtn')?.addEventListener('click', () => {
         document.getElementById('inviteModal').classList.add('active');
     });
@@ -497,6 +557,13 @@ function replaceState(path) {
 
 function handleRoute(path, page = '') {
     const route = routeMap[path] || routeMap['/'];
+
+    // Auto-redirect logged-in users to dashboard from landing page
+    if (route.screen === 'landing' && isLoggedIn()) {
+        navigateTo('/dashboard');
+        return;
+    }
+
     if (route.screen === 'dashboard' && !isLoggedIn()) {
         navigateTo('/login');
         return;
@@ -538,11 +605,86 @@ function checkAuthentication() {
         document.getElementById('loginBtn')?.classList.add('hidden');
         document.getElementById('signupBtn')?.classList.add('hidden');
         document.getElementById('logoutBtn')?.classList.remove('hidden');
+        updateUserDisplay();
     } else {
         document.getElementById('loginBtn')?.classList.remove('hidden');
         document.getElementById('signupBtn')?.classList.remove('hidden');
         document.getElementById('logoutBtn')?.classList.add('hidden');
+        clearUserDisplay();
     }
+}
+
+function updateUserDisplay() {
+    if (currentUser) {
+        // Update header user info
+        const userEmailElement = document.getElementById('userEmail');
+        if (userEmailElement) {
+            userEmailElement.textContent = currentUser.email;
+            userEmailElement.classList.remove('hidden');
+        }
+
+        // Update sidebar user info
+        const sidebarUserName = document.getElementById('sidebarUserName');
+        const sidebarUserEmail = document.getElementById('sidebarUserEmail');
+
+        if (sidebarUserName && sidebarUserEmail) {
+            // Show name if available, otherwise show email as name
+            const displayName = currentUser.name && currentUser.name.trim() ? currentUser.name : currentUser.email;
+            sidebarUserName.textContent = displayName.startsWith('Welcome, ') ? displayName : `Welcome, ${displayName.split(' ')[0]}`;
+
+            // Show email below, but only if different from display name
+            if (currentUser.name && currentUser.name.trim() && currentUser.name !== currentUser.email) {
+                sidebarUserEmail.textContent = currentUser.email;
+                sidebarUserEmail.style.display = 'block';
+            } else {
+                sidebarUserEmail.style.display = 'none';
+            }
+        }
+    }
+}
+
+function clearUserDisplay() {
+    const userEmailElement = document.getElementById('userEmail');
+    if (userEmailElement) {
+        userEmailElement.classList.add('hidden');
+    }
+}
+
+function showOnboardingModal() {
+    const isFirstLogin = localStorage.getItem('isFirstLogin') === 'true';
+    if (!isFirstLogin) return;
+
+    // Remove first login flag
+    localStorage.removeItem('isFirstLogin');
+
+    const modal = document.createElement('div');
+    modal.className = 'modal-overlay';
+    modal.innerHTML = `
+        <div class="modal onboarding-modal">
+            <div class="modal-header">
+                <h3>Welcome to Help Kin Map! 🎉</h3>
+                <button class="modal-close" onclick="this.closest('.modal-overlay').remove()">×</button>
+            </div>
+            <div class="modal-body">
+                <p>Get started with these quick actions:</p>
+                <div class="onboarding-actions">
+                    <button class="btn btn-primary btn-large" onclick="navigateToPage('requests'); this.closest('.modal-overlay').remove()">
+                        <span>📝</span>
+                        Complete Profile
+                    </button>
+                    <button class="btn btn-outline btn-large" onclick="navigateToPage('map'); this.closest('.modal-overlay').remove()">
+                        <span>🗺️</span>
+                        Explore Map
+                    </button>
+                    <button class="btn btn-secondary btn-large" onclick="showCreateRequestModal(); this.closest('.modal-overlay').remove()">
+                        <span>🆘</span>
+                        Need Help
+                    </button>
+                </div>
+            </div>
+        </div>
+    `;
+    document.body.appendChild(modal);
 }
 
 function showLanding() {
@@ -578,32 +720,69 @@ function handleLogin(e) {
     e.preventDefault();
     const form = e.target;
     const email = form.querySelector('input[type="email"]').value;
-    const name = 'Олена Коваленко';
-    currentUser = { id: 1, name, email };
+
+    // Check if user exists in localStorage (simulating database lookup)
+    const storedUsers = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
+    const existingUser = storedUsers.find(user => user.email === email);
+
+    let name;
+    if (existingUser) {
+        name = existingUser.name;
+        currentUser = { id: existingUser.id, name, email };
+    } else {
+        // For demo purposes, create a user if not found
+        name = 'Demo User';
+        currentUser = { id: Date.now(), name, email };
+        // Store in registered users for future logins
+        storedUsers.push(currentUser);
+        localStorage.setItem('registeredUsers', JSON.stringify(storedUsers));
+    }
+
     localStorage.setItem('isLoggedIn', 'true');
     localStorage.setItem('currentUser', JSON.stringify(currentUser));
+    showToast(translations[currentLang].welcomeBack, 'success');
     navigateTo('/dashboard');
-    showToast('Успішно увійшли!', 'success');
+    updateUserDisplay();
 }
 
 function handleSignup(e) {
     e.preventDefault();
     const form = e.target;
-    const name = form.querySelector('input[type="text"]').value || 'Новий користувач';
+    const formData = new FormData(form);
+    const name = formData.get('fullName') || form.querySelector('input[name="fullName"]').value || 'Новий користувач';
     const email = form.querySelector('input[type="email"]').value;
+
+    // Check if user already exists
+    const storedUsers = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
+    const existingUser = storedUsers.find(user => user.email === email);
+
+    if (existingUser) {
+        showToast(translations[currentLang].userExists, 'error');
+        return;
+    }
+
     currentUser = { id: Date.now(), name, email };
+
+    // Add to registered users
+    storedUsers.push(currentUser);
+    localStorage.setItem('registeredUsers', JSON.stringify(storedUsers));
+
     localStorage.setItem('isLoggedIn', 'true');
     localStorage.setItem('currentUser', JSON.stringify(currentUser));
+    localStorage.setItem('isFirstLogin', 'true'); // Mark as first login for onboarding
+    showToast(translations[currentLang].accountCreated, 'success');
     navigateTo('/dashboard');
-    showToast('Акаунт створено!', 'success');
+    updateUserDisplay();
+    showOnboardingModal();
 }
 
 function handleLogout() {
     localStorage.removeItem('isLoggedIn');
     localStorage.removeItem('currentUser');
     currentUser = null;
-    navigateTo('/login');
-    showToast('Ви вийшли з системи', 'info');
+    clearUserDisplay();
+    navigateTo('/');
+    showToast(translations[currentLang].logoutMessage, 'info');
 }
 
 function navigateToPage(page) {
@@ -633,35 +812,42 @@ function initializeMap() {
     if (map) return;
 
     setTimeout(() => {
-        map = L.map('map', { scrollWheelZoom: true, zoomControl: true }).setView([50.4501, 30.5234], 3);
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '© OpenStreetMap contributors'
+        map = L.map('map', { scrollWheelZoom: true, zoomControl: true }).setView([52.0, 10.0], 4);
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+            attribution: '© OpenStreetMap © CARTO',
+            maxZoom: 18,
+            minZoom: 3,
+            crossOrigin: true
         }).addTo(map);
 
         markers = L.markerClusterGroup({
             iconCreateFunction: function(cluster) {
                 const count = cluster.getChildCount();
                 return L.divIcon({
-                    html: `<div style="background: linear-gradient(135deg, #0057B7 0%, #4A90E2 100%); color: white; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; box-shadow: 0 4px 12px rgba(0, 87, 183, 0.3);">${count}</div>`,
+                    html: `<div style="background: linear-gradient(135deg, #0057B7 0%, #4A90E2 100%); color: white; border-radius: 50%; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; font-weight: 700; box-shadow: 0 6px 18px rgba(0, 87, 183, 0.35);">${count}</div>`,
                     className: 'custom-cluster-icon',
-                    iconSize: L.point(40, 40)
+                    iconSize: L.point(44, 44)
                 });
             }
         });
 
-        sampleUsers.forEach(user => {
-            const marker = L.marker([user.location.lat, user.location.lng], { userData: user });
-            const helpIcons = { housing: '🏠', job: '💼', language: '🗣️', education: '🎓', other: '💡' };
-            const helpBadges = user.helpOffers.map(offer => `
-                <span class="tag tag-${offer}">${helpIcons[offer]} ${offer}</span>`).join('');
+        mapMarkers.forEach(point => {
+            const marker = L.marker([point.lat, point.lng]);
             marker.bindPopup(`
-                <div style="font-family: var(--font-body); min-width: 200px;">
-                    <h4 style="margin-bottom: 8px; color: var(--ukraine-blue);">${user.name}</h4>
-                    <p style="margin-bottom: 8px; color: var(--text-secondary); font-size: 0.9rem;">📍 ${user.location.city}, ${user.location.country}</p>
-                    <div style="margin-bottom: 12px;">${helpBadges}</div>
-                    <button class="btn btn-primary btn-sm" onclick="connectWithUser(${user.id})" style="width: 100%;">${currentLang === 'uk' ? 'Зв\'язатися' : 'Connect'}</button>
+                <div class="map-popup">
+                    <div class="map-popup-header">
+                        <h4>${point.city}</h4>
+                        <p class="map-popup-subtitle">Helpers available</p>
+                    </div>
+                    <ul class="map-popup-list">
+                        ${point.highlights.map(highlight => `<li>• ${highlight}</li>`).join('')}
+                    </ul>
+                    <div class="map-popup-actions">
+                        <button class="btn btn-secondary btn-sm" onclick="viewDetails('${point.id}')">View Details</button>
+                        <button class="btn btn-primary btn-sm" onclick="requestHelp('${point.id}')">Request Help</button>
+                    </div>
                 </div>
-            `);
+            `, { maxWidth: 260 });
             markers.addLayer(marker);
         });
 
@@ -670,25 +856,22 @@ function initializeMap() {
     }, 50);
 }
 
+
 function filterMapMarkers() {
     if (!markers) return;
     markers.clearLayers();
-    sampleUsers.forEach(user => {
-        if (currentFilter === 'all' || user.helpOffers.includes(currentFilter)) {
-            const marker = L.marker([user.location.lat, user.location.lng], { userData: user });
-            const helpIcons = { housing: '🏠', job: '💼', language: '🗣️', education: '🎓', other: '💡' };
-            const helpBadges = user.helpOffers.map(offer => `
-                <span class="tag tag-${offer}">${helpIcons[offer]} ${offer}</span>`).join('');
-            marker.bindPopup(`
-                <div style="font-family: var(--font-body); min-width: 200px;">
-                    <h4 style="margin-bottom: 8px; color: var(--ukraine-blue);">${user.name}</h4>
-                    <p style="margin-bottom: 8px; color: var(--text-secondary); font-size: 0.9rem;">📍 ${user.location.city}, ${user.location.country}</p>
-                    <div style="margin-bottom: 12px;">${helpBadges}</div>
-                    <button class="btn btn-primary btn-sm" onclick="connectWithUser(${user.id})" style="width: 100%;">${currentLang === 'uk' ? 'Зв\'язатися' : 'Connect'}</button>
+    mapMarkers.forEach(point => {
+        const marker = L.marker([point.lat, point.lng]);
+        marker.bindPopup(`
+            <div class="map-popup">
+                <h4>${point.city}</h4>
+                <p class="map-popup-subtitle">Helpers available</p>
+                <div class="map-popup-tags">
+                    ${point.offers.map(offer => `<span>${offer}</span>`).join('')}
                 </div>
-            `);
-            markers.addLayer(marker);
-        }
+            </div>
+        `, { maxWidth: 240 });
+        markers.addLayer(marker);
     });
 }
 
@@ -836,6 +1019,54 @@ function detectLocation() {
 
 function connectWithUser(userId) {
     showToast('Запит на з\'єднання відправлено!', 'success');
+}
+
+function viewDetails(markerId) {
+    showToast(`Viewing details for ${markerId}`, 'info');
+}
+
+let activeRequestCity = '';
+
+function requestHelp(markerId) {
+    const marker = mapMarkers.find(point => point.id === markerId);
+    if (!marker) return;
+
+    activeRequestCity = marker.city;
+    document.getElementById('requestHelpCity').value = `${marker.city}, ${marker.country}`;
+    document.getElementById('requestHelpCategory').value = 'Housing';
+    document.getElementById('requestHelpMessage').value = '';
+    document.getElementById('requestHelpUrgent').checked = false;
+    document.getElementById('requestHelpModal').classList.add('active');
+}
+
+function closeRequestHelpModal() {
+    document.getElementById('requestHelpModal').classList.remove('active');
+}
+
+function submitRequestHelp() {
+    const category = document.getElementById('requestHelpCategory').value;
+    const message = document.getElementById('requestHelpMessage').value.trim();
+    const urgent = document.getElementById('requestHelpUrgent').checked;
+
+    if (!message) {
+        showToast('Please enter a message before sending.', 'error');
+        return;
+    }
+
+    const requestList = JSON.parse(localStorage.getItem('helpKinDemoRequests') || '[]');
+    const newRequest = {
+        id: Date.now(),
+        city: activeRequestCity,
+        category,
+        message,
+        urgent,
+        date: new Date().toISOString()
+    };
+    requestList.unshift(newRequest);
+    localStorage.setItem('helpKinDemoRequests', JSON.stringify(requestList));
+
+    closeRequestHelpModal();
+    showToast('Your request has been sent.', 'success');
 }
 
 function openChat(userId) {

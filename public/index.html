@@ -24,6 +24,7 @@
                 <span data-i18n="appName">Help Kin Map</span>
             </a>
             <nav class="nav-actions">
+                <div class="user-info hidden" id="userEmail"></div>
                 <select class="lang-switch" id="langSwitch">
                     <option value="uk">🇺🇦 Українська</option>
                     <option value="en">🇬🇧 English</option>
@@ -37,152 +38,160 @@
 
     <main>
         <section id="landingSection" class="landing-screen">
-            <div class="landing-grid container">
-                <div class="hero-copy">
-                    <p class="eyebrow" data-i18n="heroEyebrow">Trusted help for Ukrainians abroad</p>
-                    <h1 data-i18n="heroTitle">Find trusted help abroad</h1>
-                    <p class="hero-subtitle" data-i18n="heroSubtitle">Housing, jobs, diaspora communities, trusted people nearby. Connect with verified helpers who understand your journey.</p>
-
-                    <div class="hero-actions">
-                        <a href="/register" class="btn btn-primary btn-large" data-route="/register" data-i18n="heroNeedHelp">Need Help</a>
-                        <a href="/register" class="btn btn-secondary btn-large" data-route="/register" data-i18n="heroWantToHelp">Want to Help</a>
-                    </div>
-                    <div class="hero-actions hero-actions-alt">
-                        <a href="/dashboard" class="btn btn-primary btn-large" data-route="/dashboard" data-page="map" data-i18n="heroExploreMap">Explore Map</a>
-                        <a href="/register" class="btn btn-secondary btn-large" data-route="/register" data-i18n="heroRegister">Register</a>
-                        <a href="/login" class="btn btn-outline btn-large" data-route="/login" data-i18n="heroLogin">Login</a>
-                    </div>
-                </div>
-                <div class="hero-visual">
-                    <div class="hero-card hero-card-top">
-                        <span>📍</span>
-                        <div>
-                            <strong data-i18n="heroCardTopTitle">Trusted people nearby</strong>
-                            <p data-i18n="heroCardTopDesc">Find local community members ready to help.</p>
+            <!-- Hero Section -->
+            <section class="hero-section">
+                <div class="hero-container">
+                    <div class="hero-content">
+                        <div class="hero-badge">
+                            <span class="badge-icon">🇺🇦</span>
+                            <span class="badge-text">Trusted by Ukrainian diaspora</span>
+                        </div>
+                        <h1 class="hero-title">
+                            Find Your <span class="highlight">Safe Harbor</span><br>
+                            <span class="subtitle">in a New Land</span>
+                        </h1>
+                        <p class="hero-description">
+                            When everything feels uncertain, connect with verified helpers who understand your journey.
+                            Housing, jobs, communities, and trusted people nearby.
+                        </p>
+                        <div class="hero-actions">
+                            <a href="/register" class="btn btn-primary btn-lg" data-route="/register">
+                                <span class="btn-icon">🏠</span>
+                                Find Help Now
+                            </a>
+                            <a href="/register" class="btn btn-secondary btn-lg" data-route="/register">
+                                <span class="btn-icon">🤝</span>
+                                Offer Support
+                            </a>
                         </div>
                     </div>
-                    <div class="active-cities">
-                        <div class="city-dot city-berlin" data-city="Berlin">
-                            <div class="city-pulse"></div>
-                            <div class="city-label">Berlin</div>
+                    <div class="hero-visual">
+                        <div class="world-map-container">
+                            <div class="world-map">
+                                <div class="map-glow"></div>
+                                <div class="city-pulse city-berlin" data-city="Berlin">
+                                    <div class="pulse-ring"></div>
+                                    <div class="pulse-ring pulse-delay"></div>
+                                    <div class="city-dot"></div>
+                                </div>
+                                <div class="city-pulse city-warsaw" data-city="Warsaw">
+                                    <div class="pulse-ring"></div>
+                                    <div class="pulse-ring pulse-delay"></div>
+                                    <div class="city-dot"></div>
+                                </div>
+                                <div class="city-pulse city-prague" data-city="Prague">
+                                    <div class="pulse-ring"></div>
+                                    <div class="pulse-ring pulse-delay"></div>
+                                    <div class="city-dot"></div>
+                                </div>
+                                <div class="city-pulse city-munich" data-city="Munich">
+                                    <div class="pulse-ring"></div>
+                                    <div class="pulse-ring pulse-delay"></div>
+                                    <div class="city-dot"></div>
+                                </div>
+                                <div class="city-pulse city-toronto" data-city="Toronto">
+                                    <div class="pulse-ring"></div>
+                                    <div class="pulse-ring pulse-delay"></div>
+                                    <div class="city-dot"></div>
+                                </div>
+                                <div class="map-overlay">
+                                    <div class="connection-line line-1"></div>
+                                    <div class="connection-line line-2"></div>
+                                    <div class="connection-line line-3"></div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="city-dot city-warsaw" data-city="Warsaw">
-                            <div class="city-pulse"></div>
-                            <div class="city-label">Warsaw</div>
-                        </div>
-                        <div class="city-dot city-prague" data-city="Prague">
-                            <div class="city-pulse"></div>
-                            <div class="city-label">Prague</div>
-                        </div>
-                        <div class="city-dot city-toronto" data-city="Toronto">
-                            <div class="city-pulse"></div>
-                            <div class="city-label">Toronto</div>
-                        </div>
-                        <div class="cities-title" data-i18n="activeCitiesLabel">Active Communities</div>
-                    </div>
-                    <div class="hero-card hero-card-bottom">
-                        <span>💬</span>
-                        <div>
-                            <strong data-i18n="heroCardBottomTitle">Real support in real places</strong>
-                            <p data-i18n="heroCardBottomDesc">Connect with safe, verified helpers abroad.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <section class="landing-stats container">
-                <div class="stat-card">
-                    <div class="stat-value">127</div>
-                    <div class="stat-label" data-i18n="statHelpers">people ready to help</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value">42</div>
-                    <div class="stat-label" data-i18n="statCountries">countries</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value">18</div>
-                    <div class="stat-label" data-i18n="statRequests">active requests</div>
-                </div>
-            </section>
-
-            <section class="landing-section container">
-                <div class="section-header">
-                    <h2 data-i18n="howItWorks">How it works</h2>
-                    <p data-i18n="howItWorksDescription">Three simple steps to get support or offer help.</p>
-                </div>
-                <div class="feature-grid">
-                    <article class="feature-card">
-                        <span class="feature-number">1</span>
-                        <h3 data-i18n="feature1Title">Create your profile</h3>
-                        <p data-i18n="feature1Desc">Register quickly and share what support you need or can offer.</p>
-                    </article>
-                    <article class="feature-card">
-                        <span class="feature-number">2</span>
-                        <h3 data-i18n="feature2Title">Explore trusted helpers</h3>
-                        <p data-i18n="feature2Desc">Browse the map and categories to find verified local support.</p>
-                    </article>
-                    <article class="feature-card">
-                        <span class="feature-number">3</span>
-                        <h3 data-i18n="feature3Title">Connect with confidence</h3>
-                        <p data-i18n="feature3Desc">Message helpers, join diaspora communities, and get help safely.</p>
-                    </article>
-                </div>
-            </section>
-
-            <section class="landing-section container">
-                <div class="section-header">
-                    <h2 data-i18n="helpCategories">Help categories</h2>
-                    <p data-i18n="helpCategoriesDescription">Find the exact support you need faster. Real help from real people.</p>
-                </div>
-                <div class="category-grid">
-                    <div class="category-card" style="--i: 1">
-                        <span>🏠</span>
-                        <strong data-i18n="categoryHousing">Housing</strong>
-                        <p data-i18n="categoryHousingDesc">Temporary stays, apartments, shared homes</p>
-                    </div>
-                    <div class="category-card" style="--i: 2">
-                        <span>💼</span>
-                        <strong data-i18n="categoryJobs">Jobs</strong>
-                        <p data-i18n="categoryJobsDesc">Job leads, career advice, networking</p>
-                    </div>
-                    <div class="category-card" style="--i: 3">
-                        <span>📄</span>
-                        <strong data-i18n="categoryDocuments">Documents</strong>
-                        <p data-i18n="categoryDocumentsDesc">Visa help, paperwork, translations</p>
-                    </div>
-                    <div class="category-card" style="--i: 4">
-                        <span>⚖️</span>
-                        <strong data-i18n="categoryLegal">Legal Help</strong>
-                        <p data-i18n="categoryLegalDesc">Legal advice, immigration support</p>
-                    </div>
-                    <div class="category-card" style="--i: 5">
-                        <span>🗣️</span>
-                        <strong data-i18n="categoryLanguage">Language</strong>
-                        <p data-i18n="categoryLanguageDesc">Language lessons, cultural guidance</p>
-                    </div>
-                    <div class="category-card" style="--i: 6">
-                        <span>👥</span>
-                        <strong data-i18n="categoryCommunity">Community</strong>
-                        <p data-i18n="categoryCommunityDesc">Diaspora connections, local events</p>
                     </div>
                 </div>
             </section>
 
-            <section class="landing-trust container">
-                <div class="section-header">
-                    <h2 data-i18n="builtOnTrust">Built on trust</h2>
-                    <p data-i18n="builtOnTrustDescription">Every connection is designed to feel safe, transparent and community-driven. Your story matters.</p>
-                </div>
-                <div class="trust-grid">
-                    <div class="trust-card" style="--i: 1">
-                        <span>🛡️</span>
-                        <strong data-i18n="trustVerifiedProfiles">Verified profiles</strong>
-                        <p data-i18n="trustVerifiedProfilesDesc">We keep trusted helpers and requests visible to the community. No strangers, only connections.</p>
+            <!-- Categories Section -->
+            <section class="categories-section">
+                <div class="categories-container">
+                    <div class="categories-header">
+                        <h2>Help Categories</h2>
+                        <p>Find the exact support you need faster. Real help from real people.</p>
                     </div>
-                    <div class="trust-card" style="--i: 2">
-                        <span>💬</span>
-                        <strong data-i18n="trustSecureMessaging">Secure messaging</strong>
-                        <p data-i18n="trustSecureMessagingDesc">Communicate directly with helpers and stay in control. Your safety is our priority.</p>
+                    <div class="categories-grid">
+                        <div class="category-card">
+                            <div class="category-icon">🏠</div>
+                            <h3>Housing</h3>
+                            <p>Temporary stays, apartments, shared homes</p>
+                        </div>
+                        <div class="category-card">
+                            <div class="category-icon">💼</div>
+                            <h3>Jobs</h3>
+                            <p>Job leads, career advice, networking</p>
+                        </div>
+                        <div class="category-card">
+                            <div class="category-icon">📄</div>
+                            <h3>Documents</h3>
+                            <p>Visa help, paperwork, translations</p>
+                        </div>
+                        <div class="category-card">
+                            <div class="category-icon">⚖️</div>
+                            <h3>Legal Help</h3>
+                            <p>Legal advice, immigration support</p>
+                        </div>
+                        <div class="category-card">
+                            <div class="category-icon">🗣️</div>
+                            <h3>Language</h3>
+                            <p>Language lessons, cultural guidance</p>
+                        </div>
+                        <div class="category-card">
+                            <div class="category-icon">👥</div>
+                            <h3>Community</h3>
+                            <p>Diaspora connections, local events</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Trust Section -->
+            <section class="trust-section">
+                <div class="trust-container">
+                    <div class="trust-header">
+                        <h2>Trusted by Communities Worldwide</h2>
+                        <p>Real people, real help, real impact</p>
+                    </div>
+                    <div class="trust-grid">
+                        <div class="trust-card">
+                            <div class="trust-icon">🛡️</div>
+                            <h3>Verified Helpers</h3>
+                            <p>Every helper is personally verified by our community moderators</p>
+                        </div>
+                        <div class="trust-card">
+                            <div class="trust-icon">💬</div>
+                            <h3>Safe Communication</h3>
+                            <p>End-to-end encrypted messaging keeps your conversations private</p>
+                        </div>
+                        <div class="trust-card">
+                            <div class="trust-icon">🌍</div>
+                            <h3>Global Network</h3>
+                            <p>42 countries, 127 active helpers, growing every day</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Final CTA Section -->
+            <section class="final-cta-section">
+                <div class="final-cta-container">
+                    <div class="final-cta-content">
+                        <h2>Ready to Find Your Community?</h2>
+                        <p>Join thousands who've found support, friendship, and hope through Help Kin Map.</p>
+                        <div class="final-cta-actions">
+                            <a href="/register" class="btn btn-primary btn-lg" data-route="/register">
+                                Start Your Journey
+                            </a>
+                            <a href="/dashboard" class="btn btn-outline btn-lg" data-route="/dashboard" data-page="map">
+                                Explore the Map
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
                     </div>
                     <div class="trust-card" style="--i: 3">
                         <span>❤️</span>
@@ -234,33 +243,20 @@
                         <label class="form-label" data-i18n="password">Пароль</label>
                         <input type="password" class="form-input" required placeholder="••••••••">
                     </div>
-                    <button type="submit" class="btn btn-primary" style="width: 100%;" data-i18n="login">Увійти</button>
-
-                    <div class="divider">
-                        <span data-i18n="orContinueWith">або продовжити з</span>
+                    <div class="auth-actions">
+                        <button type="submit" class="btn btn-primary btn-large" data-i18n="login">Увійти</button>
+                        <button type="button" class="btn btn-outline btn-large" id="switchToSignup" data-route="/register" data-i18n="signup">Зареєструватися</button>
                     </div>
 
-                    <div class="social-login">
-                        <button type="button" class="social-btn">
-                            <span>📧</span>
-                            Google
-                        </button>
-                        <button type="button" class="social-btn">
-                            <span>✈️</span>
-                            Telegram
-                        </button>
+                    <div class="auth-notice">
+                        <p data-i18n="moreLoginMethods">Більше способів входу скоро з'являться</p>
                     </div>
-
-                    <p class="auth-switch">
-                        <span data-i18n="noAccount">Немає акаунта?</span>
-                        <a href="/register" id="switchToSignup" data-route="/register" data-i18n="signupLink">Зареєструватися</a>
-                    </p>
                 </form>
 
                 <form id="signupForm" class="hidden">
                     <div class="form-group">
                         <label class="form-label" data-i18n="fullName">Повне ім'я</label>
-                        <input type="text" class="form-input" required placeholder="Іван Петренко">
+                        <input type="text" name="fullName" class="form-input" required placeholder="Іван Петренко">
                     </div>
                     <div class="form-group">
                         <label class="form-label" data-i18n="email">Електронна пошта</label>
@@ -274,27 +270,14 @@
                         <input type="checkbox" id="gdprConsent" required>
                         <label for="gdprConsent" data-i18n="gdprConsent">Я погоджуюся з обробкою персональних даних (GDPR)</label>
                     </div>
-                    <button type="submit" class="btn btn-primary" style="width: 100%;" data-i18n="createAccount">Створити акаунт</button>
-
-                    <div class="divider">
-                        <span data-i18n="orContinueWith">або продовжити з</span>
+                    <div class="auth-actions">
+                        <button type="submit" class="btn btn-primary btn-large" data-i18n="createAccount">Створити акаунт</button>
+                        <button type="button" class="btn btn-outline btn-large" id="switchToLogin" data-route="/login" data-i18n="login">Увійти</button>
                     </div>
 
-                    <div class="social-login">
-                        <button type="button" class="social-btn">
-                            <span>📧</span>
-                            Google
-                        </button>
-                        <button type="button" class="social-btn">
-                            <span>✈️</span>
-                            Telegram
-                        </button>
+                    <div class="auth-notice">
+                        <p data-i18n="moreLoginMethods">Більше способів входу скоро з'являться</p>
                     </div>
-
-                    <p class="auth-switch">
-                        <span data-i18n="haveAccount">Вже є акаунт?</span>
-                        <a href="/login" id="switchToLogin" data-route="/login" data-i18n="loginLink">Увійти</a>
-                    </p>
                 </form>
             </div>
         </section>
@@ -303,6 +286,13 @@
             <div class="container">
                 <div class="dashboard">
                     <aside class="sidebar">
+                        <div class="sidebar-user">
+                            <div class="user-avatar">👤</div>
+                            <div class="user-details">
+                                <div class="user-name" id="sidebarUserName">Welcome</div>
+                                <div class="user-email" id="sidebarUserEmail"></div>
+                            </div>
+                        </div>
                         <ul class="sidebar-nav">
                             <li><a href="#" class="active" data-page="home">
                                 <span>🏠</span>
@@ -542,6 +532,44 @@
                 <button class="btn btn-secondary" onclick="navigator.clipboard.writeText('https://helpkinmap.com/invite/abc123xyz')">
                     📋 <span data-i18n="copy">Копіювати</span>
                 </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="requestHelpModal" class="modal">
+        <div class="modal-content modal-request-help">
+            <div class="modal-header">
+                <h3>Request Help</h3>
+                <button class="close-modal" onclick="closeRequestHelpModal()">✕</button>
+            </div>
+            <div class="form-group">
+                <label class="form-label">City</label>
+                <input type="text" class="form-input" id="requestHelpCity" readonly>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Category</label>
+                <select class="form-input" id="requestHelpCategory">
+                    <option value="Housing">Housing</option>
+                    <option value="Jobs">Jobs</option>
+                    <option value="Documents">Documents</option>
+                    <option value="Language">Language</option>
+                    <option value="Community">Community</option>
+                    <option value="Transport">Transport</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Message</label>
+                <textarea class="form-input" id="requestHelpMessage" rows="4" placeholder="Tell us what you need..."></textarea>
+            </div>
+            <div class="form-group checkbox-group">
+                <label class="checkbox-item">
+                    <input type="checkbox" id="requestHelpUrgent">
+                    <span>Urgent request</span>
+                </label>
+            </div>
+            <div class="modal-actions">
+                <button class="btn btn-secondary" onclick="closeRequestHelpModal()">Cancel</button>
+                <button class="btn btn-primary" id="sendRequestHelpBtn">Send Request</button>
             </div>
         </div>
     </div>

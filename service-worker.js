@@ -1,7 +1,7 @@
 const CACHE_NAME = 'help-kin-map-v1';
 const urlsToCache = [
   '/',
-  '/help-kin-map.html',
+  '/index.html',
   '/manifest.json',
   'https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Comfortaa:wght@600;700&display=swap',
   'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css',
