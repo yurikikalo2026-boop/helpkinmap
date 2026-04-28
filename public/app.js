@@ -24,8 +24,8 @@ const translations = {
         howItWorksDescription: "Три прості кроки, щоб отримати підтримку або запропонувати допомогу.",
         feature1Title: "Створіть профіль",
         feature1Desc: "Швидко зареєструйтесь і поділіться тим, яку допомогу ви потребуєте або можете запропонувати.",
-        feature2Title: "Досліджуйте перевірених помічників",
-        feature2Desc: "Переглядайте карту та категорії, щоб знайти надійну місцеву підтримку.",
+        feature2Title: "Досліджуйте місцеву підтримку",
+        feature2Desc: "Переглядайте карту та категорії, щоб знайти довірених помічників поруч.",
         feature3Title: "Зв'язуйтесь з впевненістю",
         feature3Desc: "Пишіть помічникам, приєднуйтесь до діаспорних спільнот і отримуйте допомогу безпечно.",
         helpCategoriesDescription: "Знайдіть саме ту підтримку, яка вам потрібна, швидше. Справжня допомога від реальних людей.",
@@ -42,21 +42,21 @@ const translations = {
         categoryCommunity: "Спільнота",
         categoryCommunityDesc: "Зв'язки діаспори, місцеві події",
         builtOnTrustDescription: "Кожне з'єднання створене так, щоб бути безпечним, прозорим і керованим спільнотою. Ваша історія важлива.",
-        trustVerifiedProfiles: "Перевірені профілі",
-        trustVerifiedProfilesDesc: "Ми робимо довірених помічників і запити видимими для спільноти. Жодних незнайомців, тільки зв'язки.",
-        trustSecureMessaging: "Безпечні повідомлення",
-        trustSecureMessagingDesc: "Спілкуйтеся безпосередньо з помічниками й залишайтеся в контролі. Ваша безпека — наш пріоритет.",
-        trustCommunityFirst: "Спільнота на першому місці",
-        trustCommunityFirstDesc: "Розроблено для українців за кордоном з реальною підтримкою там, де це важливо. Разом ми сильніші.",
+        trustVerifiedProfiles: "Профілі можна переглядати спільнотою",
+        trustVerifiedProfilesDesc: "Користувачі можуть залишати відгуки, щоб допомогти вибудовувати довіру.",
+        trustSecureMessaging: "Повідомляйте про підозрілу активність",
+        trustSecureMessagingDesc: "Повідомте про підозрілу активність, щоб спільнота залишалася безпечною.",
+        trustCommunityFirst: "Безпека / Safety",
+        trustCommunityFirstDesc: "<ul><li>зустрічайтеся в громадських місцях</li><li>не діліться чутливими даними</li><li>перевіряйте інформацію</li></ul>",
         ctaGetStarted: "Почати",
         ctaLogin: "Увійти",
         heroBadge: "Довіряють українській діаспорі",
         heroTitle: "Знайдіть свою <span class=\"highlight\">безпечну гавань</span><br><span class=\"subtitle\">у новій землі</span>",
-        heroSubtitle: "Коли все здається невизначеним, зв'яжіться з перевіреними помічниками, які розуміють вашу подорож. Житло, робота, громади та надійні люди поруч.",
-        trustTitle: "Підтримано спільнотами по всьому світу",
-        trustSubtitle: "Справжні люди, реальна допомога, реальний вплив",
-        trustNetwork: "Глобальна мережа",
-        trustNetworkDesc: "42 країни, 127 активних помічників, що зростає щодня",
+        heroSubtitle: "Коли все здається невизначеним, зв'яжіться з помічниками, які розуміють вашу подорож. Житло, робота, громади та надійні люди поруч.",
+        trustTitle: "Зростаюча спільнота помічників",
+        trustSubtitle: "Спілкуйтеся з людьми, готовими допомогти через підтримку спільноти.",
+        trustNetwork: "Спільнотна підтримка",
+        trustNetworkDesc: "Підтримка будується спільнотою, яка росте щодня.",
         finalCtaTitle: "Готові знайти свою спільноту?",
         finalCtaSubtitle: "Приєднуйтесь до Help Kin Map і знайдіть підтримку, дружбу та надію.",
         finalCtaPrimary: "Почати подорож",
@@ -184,13 +184,13 @@ const translations = {
         heroCardTopTitle: "Trusted people nearby",
         heroCardTopDesc: "Find local community members ready to help.",
         heroCardBottomTitle: "Real support in real places",
-        heroCardBottomDesc: "Connect with safe, verified helpers abroad.",
+        heroCardBottomDesc: "Connect with helpers abroad who are ready to support you.",
         howItWorks: "How it works",
         howItWorksDescription: "Three simple steps to get support or offer help.",
         feature1Title: "Create your profile",
         feature1Desc: "Register quickly and share what support you need or can offer.",
         feature2Title: "Explore trusted helpers",
-        feature2Desc: "Browse the map and categories to find verified local support.",
+        feature2Desc: "Browse the map and categories to find local support you can count on.",
         feature3Title: "Connect with confidence",
         feature3Desc: "Message helpers, join diaspora communities, and get help safely.",
         helpCategories: "Help categories",
@@ -209,23 +209,23 @@ const translations = {
         categoryCommunityDesc: "Diaspora connections, local events",
         builtOnTrust: "Built on trust",
         builtOnTrustDescription: "Every connection is designed to feel safe, transparent and community-driven. Your story matters.",
-        trustVerifiedProfiles: "Verified profiles",
-        trustVerifiedProfilesDesc: "We keep trusted helpers and requests visible to the community. No strangers, only connections.",
-        trustSecureMessaging: "Secure messaging",
-        trustSecureMessagingDesc: "Communicate directly with helpers and stay in control. Your safety is our priority.",
-        trustCommunityFirst: "Community first",
-        trustCommunityFirstDesc: "Designed for Ukrainians abroad with real support where it matters. Together, we're stronger.",
+        trustVerifiedProfiles: "Community-reviewed profiles",
+        trustVerifiedProfilesDesc: "Profiles can be reviewed by community members to help build trust.",
+        trustSecureMessaging: "Report suspicious activity",
+        trustSecureMessagingDesc: "Flag anything that feels off so the community stays safer.",
+        trustCommunityFirst: "Безпека / Safety",
+        trustCommunityFirstDesc: "<ul><li>meet in public places</li><li>do not share sensitive data</li><li>verify information</li></ul>",
         readyCtaTitle: "Ready to find help or give it?",
-        readyCtaSubtitle: "Join Help Kin Map and connect with a trusted diaspora network worldwide.",
+        readyCtaSubtitle: "Join Help Kin Map and connect with a growing diaspora network worldwide.",
         ctaGetStarted: "Get Started",
         ctaLogin: "Login",
         heroBadge: "Trusted by Ukrainian diaspora",
         heroTitle: "Find Your <span class=\"highlight\">Safe Harbor</span><br><span class=\"subtitle\">in a New Land</span>",
-        heroSubtitle: "When everything feels uncertain, connect with verified helpers who understand your journey. Housing, jobs, communities, and trusted people nearby.",
-        trustTitle: "Trusted by communities worldwide",
-        trustSubtitle: "Real people, real help, real impact",
-        trustNetwork: "Global Network",
-        trustNetworkDesc: "42 countries, 127 active helpers, growing every day",
+        heroSubtitle: "When everything feels uncertain, connect with people who understand your journey. Housing, jobs, communities, and trusted people nearby.",
+        trustTitle: "Growing community of helpers",
+        trustSubtitle: "Connect with people willing to help through community-based support.",
+        trustNetwork: "Community-based support",
+        trustNetworkDesc: "Support that grows from real community connections.",
         finalCtaTitle: "Ready to find your community?",
         finalCtaSubtitle: "Join Help Kin Map and find support, friendship, and hope.",
         finalCtaPrimary: "Start Your Journey",
@@ -384,6 +384,24 @@ const mapMarkers = [
 
 const sampleUsers = [
     {
+        id: 0,
+        name: "Anna",
+        location: { country: "Poland", city: "Warsaw", lat: 52.229676, lng: 21.012229 },
+        bio: "Offers temporary housing and local tips to newcomers in Warsaw.",
+        helpOffers: ["housing"],
+        offerDetails: "Готова допомогти з житлом і адаптацією у Варшаві.",
+        isConnected: true
+    },
+    {
+        id: -1,
+        name: "Oleh",
+        location: { country: "Czech Republic", city: "Prague", lat: 50.075538, lng: 14.4378 },
+        bio: "Provides job support and practical guidance in Prague.",
+        helpOffers: ["job"],
+        offerDetails: "Допоможу з пошуком роботи та місцевими контактами.",
+        isConnected: true
+    },
+    {
         id: 1,
         name: "Олена Коваленко",
         location: { country: "Germany", city: "Berlin", lat: 52.520008, lng: 13.404954 },
@@ -514,6 +532,48 @@ const sampleChats = [
         lastMessage: "Надіслав тобі контакти",
         unread: 1,
         time: "2 дні тому"
+    }
+];
+
+const demoRequests = [
+    {
+        id: 'demo-1',
+        author: 'Anya K.',
+        title: 'Looking for housing in Warsaw',
+        description: 'Need a safe place for a family arriving next week. Prefer shared apartment near the city center.',
+        location: 'Warsaw, Poland',
+        status: 'open',
+        date: 'Today',
+        responses: 0
+    },
+    {
+        id: 'demo-2',
+        author: 'Marta S.',
+        title: 'Need help with documents in Berlin',
+        description: 'Looking for someone who can support with residency paperwork and local bureaucracy.',
+        location: 'Berlin, Germany',
+        status: 'open',
+        date: 'Yesterday',
+        responses: 1
+    }
+];
+
+const demoNetwork = [
+    {
+        id: 'demo-101',
+        name: 'Anna',
+        location: { country: 'Poland', city: 'Warsaw' },
+        bio: 'Offers temporary housing for new arrivals in Warsaw.',
+        helpOffers: ['housing'],
+        isConnected: true
+    },
+    {
+        id: 'demo-102',
+        name: 'Oleh',
+        location: { country: 'Czech Republic', city: 'Prague' },
+        bio: 'Provides job support and local guidance in Prague.',
+        helpOffers: ['job'],
+        isConnected: true
     }
 ];
 
@@ -825,6 +885,7 @@ function handleLogin(e) {
 
     localStorage.setItem('isLoggedIn', 'true');
     localStorage.setItem('currentUser', JSON.stringify(currentUser));
+    checkAuthentication();
     showToast(translations[currentLang].welcomeBack, 'success');
     navigateTo('/dashboard');
     updateUserDisplay();
@@ -855,6 +916,7 @@ function handleSignup(e) {
     localStorage.setItem('isLoggedIn', 'true');
     localStorage.setItem('currentUser', JSON.stringify(currentUser));
     localStorage.setItem('isFirstLogin', 'true'); // Mark as first login for onboarding
+    checkAuthentication();
     showToast(translations[currentLang].accountCreated, 'success');
     navigateTo('/dashboard');
     updateUserDisplay();
@@ -863,18 +925,22 @@ function handleSignup(e) {
 
 function handleLogout() {
     const savedLang = localStorage.getItem('lang');
-    localStorage.removeItem('isLoggedIn');
+    localStorage.setItem('isLoggedIn', 'false');
     localStorage.removeItem('currentUser');
     localStorage.setItem('lang', savedLang);
     currentUser = null;
     clearUserDisplay();
+    checkAuthentication();
     navigateTo('/');
     showToast(translations[currentLang].logoutMessage, 'info');
 }
 
 function navigateToPage(page) {
     document.querySelectorAll('.page-content').forEach(p => p.classList.add('hidden'));
-    document.getElementById(page + 'Page').classList.remove('hidden');
+    const targetPage = document.getElementById(page + 'Page');
+    if (targetPage) {
+        targetPage.classList.remove('hidden');
+    }
     document.querySelectorAll('.sidebar-nav a').forEach(a => a.classList.remove('active'));
     document.querySelector(`[data-page="${page}"]`)?.classList.add('active');
     if (page === 'map') {
@@ -883,6 +949,10 @@ function navigateToPage(page) {
         } else {
             setTimeout(() => map.invalidateSize(), 100);
         }
+    }
+    const anchor = document.getElementById(page);
+    if (anchor) {
+        anchor.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 }
 
@@ -899,7 +969,7 @@ function initializeMap() {
     if (map) return;
 
     setTimeout(() => {
-        map = L.map('map', { scrollWheelZoom: true, zoomControl: true }).setView([52.0, 10.0], 4);
+        map = L.map('dashboardMap', { scrollWheelZoom: true, zoomControl: true }).setView([52.0, 10.0], 4);
         L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
             attribution: '© OpenStreetMap © CARTO',
             maxZoom: 18,
@@ -987,9 +1057,19 @@ function renderHelpersGrid() {
     `).join('');
 }
 
+function getStoredRequests() {
+    return JSON.parse(localStorage.getItem('helpKinDemoRequests') || '[]');
+}
+
+function getCurrentRequests() {
+    const storedRequests = getStoredRequests();
+    return storedRequests.length ? storedRequests : demoRequests;
+}
+
 function renderRecentRequests() {
     const list = document.getElementById('recentRequestsList');
-    list.innerHTML = sampleRequests.slice(0, 3).map(request => `
+    const requests = getCurrentRequests().slice(0, 3);
+    list.innerHTML = requests.map(request => `
         <div class="request-card">
             <div class="request-header">
                 <div>
@@ -1015,7 +1095,23 @@ function renderRecentRequests() {
 
 function renderRequestsList() {
     const list = document.getElementById('requestsList');
-    list.innerHTML = sampleRequests.map(request => `
+    const requests = getCurrentRequests();
+    if (!requests.length) {
+        list.innerHTML = `
+            <div class="empty-state">
+                <div class="empty-state-icon">📬</div>
+                <h3 class="empty-state-title">No requests yet</h3>
+                <p class="empty-state-text">Create your first request and let the community know how they can help.</p>
+                <div class="empty-state-actions">
+                    <button class="btn btn-primary" onclick="openCreateRequestModal()">Start request</button>
+                    <button class="btn btn-secondary" onclick="navigateToPage('map')">Browse helpers</button>
+                </div>
+            </div>
+        `;
+        return;
+    }
+
+    list.innerHTML = requests.map(request => `
         <div class="request-card">
             <div class="request-header">
                 <div>
@@ -1039,10 +1135,34 @@ function renderRequestsList() {
     `).join('');
 }
 
+function getActiveNetworkUsers() {
+    const storedNetwork = JSON.parse(localStorage.getItem('helpKinDemoNetwork') || '[]');
+    if (storedNetwork.length) {
+        return storedNetwork;
+    }
+    const connectedUsers = sampleUsers.filter(u => u.isConnected);
+    return connectedUsers.length ? connectedUsers : demoNetwork;
+}
+
 function renderNetworkGrid() {
     const grid = document.getElementById('networkGrid');
-    const connectedUsers = sampleUsers.filter(u => u.isConnected);
+    const connectedUsers = getActiveNetworkUsers();
     const helpIcons = { housing: '🏠', job: '💼', language: '🗣️', education: '🎓', other: '💡' };
+    if (!connectedUsers.length) {
+        grid.innerHTML = `
+            <div class="empty-state">
+                <div class="empty-state-icon">👥</div>
+                <h3 class="empty-state-title">Your network is empty</h3>
+                <p class="empty-state-text">Add helpers, invite friends, or connect with people who can support your next step.</p>
+                <div class="empty-state-actions">
+                    <button class="btn btn-primary" onclick="openInviteModal()">Invite someone</button>
+                    <button class="btn btn-secondary" onclick="navigateToPage('map')">Find helpers</button>
+                </div>
+            </div>
+        `;
+        return;
+    }
+
     grid.innerHTML = connectedUsers.map(user => `
         <div class="card">
             <div class="card-header">
@@ -1064,9 +1184,31 @@ function renderNetworkGrid() {
     `).join('');
 }
 
+function getStoredMessages() {
+    return JSON.parse(localStorage.getItem('helpKinDemoMessages') || '[]');
+}
+
 function renderChatList() {
     const list = document.getElementById('chatList');
-    list.innerHTML = sampleChats.map(chat => `
+    const messagesList = document.getElementById('messagesList');
+    const messages = getStoredMessages().length ? getStoredMessages() : sampleChats;
+    if (!messages.length) {
+        const placeholder = `
+            <div class="empty-state">
+                <div class="empty-state-icon">💬</div>
+                <h3 class="empty-state-title">No messages yet</h3>
+                <p class="empty-state-text">Start a conversation with helpers or invite a friend to begin chatting.</p>
+                <div class="empty-state-actions">
+                    <button class="btn btn-primary" onclick="startConversation()">Start conversation</button>
+                </div>
+            </div>
+        `;
+        if (list) list.innerHTML = placeholder;
+        if (messagesList) messagesList.innerHTML = placeholder;
+        return;
+    }
+
+    const html = messages.map(chat => `
         <div class="chat-item" onclick="openChatConversation(${chat.id})">
             <div class="chat-avatar">${chat.user.charAt(0)}</div>
             <div class="chat-info">
@@ -1076,6 +1218,12 @@ function renderChatList() {
             ${chat.unread > 0 ? `<div class="unread-badge">${chat.unread}</div>` : ''}
         </div>
     `).join('');
+    if (list) {
+        list.innerHTML = html;
+    }
+    if (messagesList) {
+        messagesList.innerHTML = html;
+    }
 }
 
 function handleCreateRequest(e) {
@@ -1083,6 +1231,19 @@ function handleCreateRequest(e) {
     document.getElementById('createRequestModal').classList.remove('active');
     showToast('Запит створено успішно!', 'success');
     e.target.reset();
+}
+
+function openCreateRequestModal() {
+    document.getElementById('createRequestModal').classList.add('active');
+}
+
+function openInviteModal() {
+    document.getElementById('inviteModal').classList.add('active');
+}
+
+function startConversation() {
+    document.getElementById('chatSidebar').classList.add('active');
+    showToast('Ready to start a conversation! Choose a helper or invite someone new.', 'info');
 }
 
 function handleSendInvite() {

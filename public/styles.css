@@ -37,6 +37,10 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 html, body {
     min-height: 100%;
 }
@@ -1002,7 +1006,7 @@ img {
     color: white;
 }
 
-#map {
+#dashboardMap {
     height: 600px;
     min-height: 600px;
     border-radius: var(--radius-md);
@@ -1166,6 +1170,40 @@ img {
 .card-actions {
     display: flex;
     gap: var(--spacing-sm);
+}
+
+.empty-state {
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+    background: #FFFFFF;
+    box-shadow: var(--shadow-md);
+    text-align: center;
+    border: 1px solid #E0E6ED;
+}
+
+.empty-state-icon {
+    font-size: 2.5rem;
+    margin-bottom: var(--spacing-md);
+}
+
+.empty-state-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--ukraine-blue);
+    margin-bottom: var(--spacing-sm);
+}
+
+.empty-state-text {
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-lg);
+    line-height: 1.6;
+}
+
+.empty-state-actions {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    flex-wrap: wrap;
 }
 
 .btn-sm {
@@ -1579,7 +1617,7 @@ img {
         margin-bottom: var(--spacing-lg);
     }
 
-    #map {
+    #dashboardMap {
         min-height: 420px;
     }
 

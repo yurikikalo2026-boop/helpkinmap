@@ -161,8 +161,13 @@
                         </div>
                         <div class="trust-card">
                             <div class="trust-icon">🌍</div>
-                            <h3 data-i18n="trustNetwork">Глобальна мережа</h3>
-                            <p data-i18n="trustNetworkDesc">42 країни, 127 активних помічників, що зростає щодня</p>
+                            <h3 data-i18n="trustNetwork">Спільнотна підтримка</h3>
+                            <p data-i18n="trustNetworkDesc">Підтримка будується спільнотою, яка росте щодня.</p>
+                        </div>
+                        <div class="trust-card">
+                            <div class="trust-icon">🛟</div>
+                            <h3 data-i18n="trustCommunityFirst">Безпека / Safety</h3>
+                            <p data-i18n="trustCommunityFirstDesc">Зустрічайтеся в громадських місцях, не діліться чутливими даними, перевіряйте інформацію.</p>
                         </div>
                     </div>
                 </div>
@@ -224,27 +229,27 @@
                             </div>
                         </div>
                         <ul class="sidebar-nav">
-                            <li><a href="/dashboard#home" class="active" data-route="/dashboard" data-page="home">
+                            <li><a href="#home" class="active" data-route="/dashboard" data-page="home">
                                 <span>🏠</span>
                                 <span data-i18n="navHome">Головна</span>
                             </a></li>
-                            <li><a href="/dashboard#map" data-route="/dashboard" data-page="map">
+                            <li><a href="#map" data-route="/dashboard" data-page="map">
                                 <span>🗺️</span>
                                 <span data-i18n="navMap">Карта допомоги</span>
                             </a></li>
-                            <li><a href="/dashboard#requests" data-route="/dashboard" data-page="requests">
+                            <li><a href="#requests" data-route="/dashboard" data-page="requests">
                                 <span>📋</span>
                                 <span data-i18n="navRequests">Запити на допомогу</span>
                             </a></li>
-                            <li><a href="/dashboard#network" data-route="/dashboard" data-page="network">
+                            <li><a href="#network" data-route="/dashboard" data-page="network">
                                 <span>👥</span>
                                 <span data-i18n="navNetwork">Моя мережа</span>
                             </a></li>
-                            <li><a href="/dashboard#messages" data-route="/dashboard" data-page="messages">
+                            <li><a href="#messages" data-route="/dashboard" data-page="messages">
                                 <span>💬</span>
                                 <span data-i18n="navMessages">Повідомлення</span>
                             </a></li>
-                            <li><a href="/dashboard#profile" data-route="/dashboard" data-page="profile">
+                            <li><a href="#profile" data-route="/dashboard" data-page="profile">
                                 <span>⚙️</span>
                                 <span data-i18n="navProfile">Профіль</span>
                             </a></li>
@@ -253,6 +258,7 @@
 
                     <main class="main-content">
                         <div id="homePage" class="page-content">
+                            <span id="home"></span>
                             <h1 class="page-title" data-i18n="dashboardTitle">Ласкаво просимо, <span id="userName">Друже</span>! 👋</h1>
 
                             <div class="stats-grid">
@@ -279,6 +285,7 @@
                         </div>
 
                         <div id="mapPage" class="page-content hidden">
+                            <span id="map"></span>
                             <div class="map-section">
                                 <div class="map-header">
                                     <h2 data-i18n="mapTitle">Карта допомоги по всьому світу</h2>
@@ -300,7 +307,7 @@
                                         </button>
                                     </div>
                                 </div>
-                                <div id="map"></div>
+                                <div id="dashboardMap"></div>
                             </div>
 
                             <h2 class="section-title" data-i18n="peopleOffering">Люди, що пропонують допомогу</h2>
@@ -308,6 +315,7 @@
                         </div>
 
                         <div id="requestsPage" class="page-content hidden">
+                            <span id="requests"></span>
                             <div class="page-heading">
                                 <h2 data-i18n="requestsTitle">Запити на допомогу</h2>
                                 <button class="btn btn-primary" id="createRequestBtn" data-i18n="createRequest">+ Створити запит</button>
@@ -316,6 +324,7 @@
                         </div>
 
                         <div id="networkPage" class="page-content hidden">
+                            <span id="network"></span>
                             <div class="page-heading">
                                 <h2 data-i18n="networkTitle">Моя мережа</h2>
                                 <button class="btn btn-primary" id="inviteBtn" data-i18n="inviteBtn">+ Запросити родича/друга</button>
@@ -323,7 +332,16 @@
                             <div class="cards-grid" id="networkGrid"></div>
                         </div>
 
+                        <div id="messagesPage" class="page-content hidden">
+                            <span id="messages"></span>
+                            <div class="page-heading">
+                                <h2 data-i18n="messages">Повідомлення</h2>
+                            </div>
+                            <div class="cards-grid" id="messagesList"></div>
+                        </div>
+
                         <div id="profilePage" class="page-content hidden">
+                            <span id="profile"></span>
                             <h2 class="section-title" data-i18n="profileTitle">Мій профіль</h2>
                             <div class="profile-grid">
                                 <div class="card">
